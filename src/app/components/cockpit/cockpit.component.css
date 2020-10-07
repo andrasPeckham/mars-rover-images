@@ -9,9 +9,13 @@
   border-color: black;
   background: white;
   color: black;
+  outline: none;
 }
-.button:active{
+.submit{
   background: coral;
+}
+.submit:active{
+  background: lightsalmon;
 }
 .form-control{
   margin-bottom: 0px;
@@ -26,4 +30,7 @@
 .un-selected{
   background: white;
   color: black;
+}
+.un-selected:active{
+  background: coral;
 }

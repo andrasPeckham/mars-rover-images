@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import {MarsRover} from '../../models/mars-rover';
 
 @Component({
   selector: 'app-images-container',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./images-container.component.css']
 })
 export class ImagesContainerComponent implements OnInit {
+  @Input() rovers: MarsRover[];
+
   ngOnInit(): void {
   }
 }

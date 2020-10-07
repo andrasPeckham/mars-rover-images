@@ -12,11 +12,11 @@
   <hr>
   <div class="searchParams">
     <p class="labels">Sol:</p>
-    <input class="form-control">
+    <input class="form-control" [defaultValue]="100">
     <p class="labels">Images per page:</p>
-    <input class="form-control">
+    <input class="form-control" [defaultValue]="5">
   </div>
   <hr>
-  <button class="button" style="background: coral">Submit</button>
+  <button class="button submit" (click)="refreshImages(rovers)">Submit</button>
 </div>
-<app-images-container></app-images-container>
+<app-images-container [rovers] = rovers></app-images-container>

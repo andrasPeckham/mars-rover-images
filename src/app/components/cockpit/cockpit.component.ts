@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {MarsRover} from '../../models/mars-rover';
-import {MarsImage} from '../../models/mars-image';
+import { ImagesContainerComponent } from '../images-container/images-container.component';
 import {MarsImageService} from '../../services/mars-image.service';
 
 @Component({
@@ -10,7 +10,6 @@ import {MarsImageService} from '../../services/mars-image.service';
 })
 export class CockpitComponent implements OnInit {
   rovers: MarsRover[];
-  images: MarsImage[];
   roversLoaded: boolean;
   selectedRover: string;
 
@@ -31,4 +30,7 @@ export class CockpitComponent implements OnInit {
     console.log(this.selectedRover);
   }
 
+  refreshImages(rovers: MarsRover[]) {
+
+  }
 }
