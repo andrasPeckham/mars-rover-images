@@ -6,10 +6,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./images-container.component.css']
 })
 export class ImagesContainerComponent implements OnInit {
-
-  constructor() { }
-
   ngOnInit(): void {
   }
-
 }

@@ -1,1 +1,22 @@
-<p>cockpit works!</p>
+<div class="container">
+  <h3>Select which images to list</h3>
+  <hr>
+  <p>Rover:</p>
+  <p *ngIf="!roversLoaded">Loading...</p>
+  <button
+    class="button"
+    *ngFor="let rover of rovers"
+    (click)="selectedRover = rover.name; roverSelected();"
+    [ngClass]="selectedRover == rover.name ? 'selected' : 'un-selected'"
+  > {{ rover.name }}</button>
+  <hr>
+  <div class="searchParams">
+    <p class="labels">Sol:</p>
+    <input class="form-control">
+    <p class="labels">Images per page:</p>
+    <input class="form-control">
+  </div>
+  <hr>
+  <button class="button" style="background: coral">Submit</button>
+</div>
+<app-images-container></app-images-container>

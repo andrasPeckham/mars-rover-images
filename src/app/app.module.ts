@@ -4,15 +4,21 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { CockpitComponent } from './components/cockpit/cockpit.component';
 import { ImagesContainerComponent } from './components/images-container/images-container.component';
+import { ImageComponent } from './components/image/image.component';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {CommonModule} from '@angular/common';
 
 @NgModule({
   declarations: [
     AppComponent,
     CockpitComponent,
-    ImagesContainerComponent
+    ImagesContainerComponent,
+    ImageComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    CommonModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
