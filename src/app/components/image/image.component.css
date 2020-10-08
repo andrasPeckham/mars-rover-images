@@ -1,0 +1,9 @@
+.marsImg {
+  height: 30%;
+  width: 30%;
+}
+.marsImg:hover{
+  border-width: 5px;
+  border-color: coral;
+  border-style: solid;
+}

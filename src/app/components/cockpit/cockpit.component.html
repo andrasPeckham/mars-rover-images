@@ -12,10 +12,25 @@
     > {{ rover.name }}</button>
     <hr>
     <div class="searchParams">
-      <p class="labels">Sol:</p>
-      <input class="form-control" [(ngModel)]="solNumber">
-      <p class="labels">Images per page:</p>
-      <input class="form-control" [(ngModel)]="imagesPerPage">
+      <div>
+        <p class="labels">Sol:</p>
+        <select class="custom-select-sm" [(ngModel)]="solNumber">
+          <option *ngFor="let sol of solsOfRoverArray">{{sol}}</option>
+        </select>
+      </div>
+      <hr>
+      <div>
+        <p class="labels">List images:</p>
+        <input class="form-control" [(ngModel)]="imagesPerPage">
+        <p class="labels">Min:</p>
+        <select class="custom-select-sm">
+
+        </select>
+        <p class="labels">Max:</p>
+        <select class="custom-select-sm">
+
+        </select>
+      </div>
     </div>
     <hr>
     <button class="button submit" (click)="refreshImages()">Submit</button>
