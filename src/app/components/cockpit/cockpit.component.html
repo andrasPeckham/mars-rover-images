@@ -10,25 +10,25 @@
       (click)="selectedRover = rover.name; roverSelected();"
       [ngClass]="selectedRover == rover.name ? 'selected' : 'un-selected'"
     > {{ rover.name }}</button>
-    <hr>
     <div class="searchParams">
       <div>
-        <p class="labels">Sol:</p>
+        <details>
+          <summary class="labels">Sol:</summary>
+          <p>Sol (borrowed from the Latin word for sun) is a solar day on Mars; that is, a Mars-day.
+            A sol is the apparent interval between two successive returns of the Sun to the same meridian (sundial time) as seen by an observer on Mars.
+            It is one of several units for timekeeping on Mars.</p>
+        </details>
         <select class="custom-select-sm" [(ngModel)]="solNumber">
           <option *ngFor="let sol of solsOfRoverArray">{{sol}}</option>
         </select>
       </div>
-      <hr>
       <div>
-        <p class="labels">List images:</p>
-        <input class="form-control" [(ngModel)]="imagesPerPage">
-        <p class="labels">Min:</p>
-        <select class="custom-select-sm">
-
-        </select>
-        <p class="labels">Max:</p>
-        <select class="custom-select-sm">
-
+        <p class="labels">Max number of images per page:</p>
+        <select class="custom-select-sm" [(ngModel)]="imagesPerPage">
+          <option>5</option>
+          <option>25</option>
+          <option>100</option>
+          <option>Show all</option>
         </select>
       </div>
     </div>
@@ -36,4 +36,6 @@
     <button class="button submit" (click)="refreshImages()">Submit</button>
   </div>
 </div>
-<app-images-container [images] = "images" [imagesLoaded] = "imagesLoaded"></app-images-container>
+<app-left-right-arrows *ngIf="images.length != 0 && imagesLoaded" [sliceFrom]="sliceFrom" [sliceTo]="sliceTo" [imagesPerPage]="imagesPerPage" (changeScliceTo)="changeSlice($event)"></app-left-right-arrows>
+<app-images-container [images] = "images" [imagesLoaded] = "imagesLoaded" [firstLoad]="firstload"></app-images-container>
+<app-left-right-arrows *ngIf="images.length != 0 && imagesLoaded" [sliceFrom]="sliceFrom" [sliceTo]="sliceTo" [imagesPerPage]="imagesPerPage" (changeScliceTo)="changeSlice($event)"></app-left-right-arrows>

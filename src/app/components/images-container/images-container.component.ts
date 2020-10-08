@@ -11,6 +11,7 @@ import {MarsImage} from '../../models/mars-image';
 export class ImagesContainerComponent implements OnInit {
   @Input() images: MarsImage[];
   @Input() imagesLoaded: boolean;
+  @Input() firstLoad: boolean;
 
   ngOnInit(): void {
   }

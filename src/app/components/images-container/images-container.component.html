@@ -1,5 +1,5 @@
-<p *ngIf="!imagesLoaded" style="color: white">Images loading...</p>
 <div class="cnt">
-  <p *ngIf="images.length == 0" style="color: white">Sorry, there were no rover pictures taken on that sol.</p>
+  <p *ngIf="!imagesLoaded" style="color: white">Images loading...</p>
+  <p *ngIf="images.length == 0 && !firstLoad && imagesLoaded" style="color: white">Sorry, there were no rover pictures taken on that sol.</p>
   <app-image *ngFor="let image of images" [image]="image"></app-image>
 </div>

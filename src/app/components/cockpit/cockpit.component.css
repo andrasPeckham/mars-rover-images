@@ -1,7 +1,7 @@
 .outer-container {
   display: flex;
   justify-content: center;
-  margin-bottom: 100px;
+  margin-bottom: 10px;
 }
 .container {
   background: whitesmoke;
@@ -38,4 +38,7 @@
 }
 .un-selected:active{
   background: coral;
+}
+summary:focus{
+  outline: none;
 }

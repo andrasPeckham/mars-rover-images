@@ -1,0 +1,10 @@
+<div class="prevNextDiv" *ngIf="imagesPerPage != 'Show all'">
+  <div class="left-right">
+    <div class="triangle-left" (click)="changeSlice(sliceFrom - imagesPerPage, sliceTo - imagesPerPage)"></div>
+    <p class="prevNext">Previous {{ imagesPerPage }} </p>
+  </div>
+  <div class="left-right">
+    <p class="prevNext">Next {{ imagesPerPage }} </p>
+    <div class="triangle-right" (click)="changeSlice(sliceFrom + imagesPerPage, sliceTo + imagesPerPage)"></div>
+  </div>
+</div>
