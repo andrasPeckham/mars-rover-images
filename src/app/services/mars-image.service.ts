@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {MarsImage} from '../models/mars-image';
 import {Result} from '../models/result';
+import {ImagesResult} from '../models/images-result';
 
 @Injectable({
   providedIn: 'root'
@@ -13,14 +14,21 @@ export class MarsImageService {
   photos = '/photos';
   sol = '&sol=';
   apiKey = '?api_key=E3qash6cEd3SaoTdIjTyHjGzJHF2INcONp9uG5yj';
-  limit = '&_limit=';
 
   constructor(private http: HttpClient) { }
 
   getRovers(): Observable<Result>{
     return this.http.get<Result>(this.roversUrl +  this.apiKey);
   }
-  getPhotos(rover: string, sol: number, limit: number): Observable<MarsImage[]>{
-    return this.http.get<MarsImage[]>(this.roversUrl + rover + this.photos + this.apiKey + this.sol + sol + this.limit + limit);
+  getPhotos(rover: string, sol: number): Observable<ImagesResult>{
+    console.log('getPhotos called');
+
+    const httpURL = this.roversUrl + '/' + rover.toLowerCase()
+      + this.photos + this.apiKey + this.sol + sol;
+
+    console.log('http get with : ' + httpURL);
+
+    return this.http.get<ImagesResult>(this.roversUrl + '/' + rover.toLowerCase()
+      + this.photos + this.apiKey + this.sol + sol);
   }
 }

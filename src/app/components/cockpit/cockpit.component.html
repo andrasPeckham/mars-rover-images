@@ -1,22 +1,24 @@
-<div class="container">
-  <h3>Select which images to list</h3>
-  <hr>
-  <p>Rover:</p>
-  <p *ngIf="!roversLoaded">Loading...</p>
-  <button
-    class="button"
-    *ngFor="let rover of rovers"
-    (click)="selectedRover = rover.name; roverSelected();"
-    [ngClass]="selectedRover == rover.name ? 'selected' : 'un-selected'"
-  > {{ rover.name }}</button>
-  <hr>
-  <div class="searchParams">
-    <p class="labels">Sol:</p>
-    <input class="form-control" [defaultValue]="100">
-    <p class="labels">Images per page:</p>
-    <input class="form-control" [defaultValue]="5">
+<div class="outer-container">
+  <div class="container">
+    <h3>Select which images to list</h3>
+    <hr>
+    <p>Rover:</p>
+    <p *ngIf="!roversLoaded">Loading...</p>
+    <button
+      class="button"
+      *ngFor="let rover of rovers"
+      (click)="selectedRover = rover.name; roverSelected();"
+      [ngClass]="selectedRover == rover.name ? 'selected' : 'un-selected'"
+    > {{ rover.name }}</button>
+    <hr>
+    <div class="searchParams">
+      <p class="labels">Sol:</p>
+      <input class="form-control" [(ngModel)]="solNumber">
+      <p class="labels">Images per page:</p>
+      <input class="form-control" [(ngModel)]="imagesPerPage">
+    </div>
+    <hr>
+    <button class="button submit" (click)="refreshImages()">Submit</button>
   </div>
-  <hr>
-  <button class="button submit" (click)="refreshImages(rovers)">Submit</button>
 </div>
-<app-images-container [rovers] = rovers></app-images-container>
+<app-images-container [images] = "images" [imagesLoaded] = "imagesLoaded"></app-images-container>

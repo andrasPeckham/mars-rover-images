@@ -5,7 +5,9 @@ export class MarsImage {
  id: number;
  sol: number;
  camera: Camera;
- src: string;
- earthDate: Date;
+  // tslint:disable-next-line:variable-name
+ img_src: string;
+  // tslint:disable-next-line:variable-name
+ earth_date: Date;
  rover: MarsRover;
 }

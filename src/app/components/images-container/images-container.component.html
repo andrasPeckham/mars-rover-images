@@ -1,2 +1,4 @@
-<p *ngFor="let rover of rovers">{{ rover.name }}</p>
-
+<p *ngIf="!imagesLoaded">Images loading...</p>
+<div *ngFor="let image of images">
+  <img src="{{image.img_src}}">
+</div>
