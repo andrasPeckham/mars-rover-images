@@ -3,7 +3,7 @@
     <h3>Select which images to list</h3>
     <hr>
     <p>Rover:</p>
-    <p *ngIf="!roversLoaded">Loading...</p>
+    <p *ngIf="!roversLoaded" style="color: coral;">Loading rovers...</p>
     <button
       class="button"
       *ngFor="let rover of rovers"
@@ -18,9 +18,11 @@
             A sol is the apparent interval between two successive returns of the Sun to the same meridian (sundial time) as seen by an observer on Mars.
             It is one of several units for timekeeping on Mars.</p>
         </details>
-        <select class="custom-select-sm" [(ngModel)]="solNumber">
+        <p *ngIf="!solsOfRoverArrayLoaded" style="color: coral">Loading sols...</p>
+        <select class="custom-select-sm" [(ngModel)]="solNumber" (change)="changeCorrespondingEarthDate()">
           <option *ngFor="let sol of solsOfRoverArray">{{sol}}</option>
         </select>
+        <p style="margin-top: 10px">Corresponding earth date: {{ earthDateCorrespondingWithSol }}</p>
       </div>
       <div>
         <p class="labels">Max number of images per page:</p>

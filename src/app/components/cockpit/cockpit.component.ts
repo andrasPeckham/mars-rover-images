@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {MarsRover} from '../../models/mars-rover';
 import {MarsImageService} from '../../services/mars-image.service';
 import {MarsImage} from '../../models/mars-image';
+import {Photo} from '../../models/photo';
 
 @Component({
   selector: 'app-cockpit',
@@ -12,12 +13,15 @@ export class CockpitComponent implements OnInit {
   rovers: MarsRover[];
   images: MarsImage[] = [];
   allImages: MarsImage[] = [];
+  imageManifest: Photo[];
   solsOfRoverArray: number[];
+  solsOfRoverArrayLoaded: boolean;
+  earthDateCorrespondingWithSol: Date;
 
   roversLoaded: boolean;
   imagesLoaded: boolean;
   selectedRover: string;
-  solNumber = 100;
+  solNumber = 0;
   imagesPerPage;
   sliceFrom = 0;
   sliceTo = 100;
@@ -30,6 +34,7 @@ export class CockpitComponent implements OnInit {
     this.roversLoaded = false;
     this.imagesLoaded = true;
     this.imagesPerPage = 5;
+    this.solsOfRoverArrayLoaded = false;
     this.marsImageService.getRovers().subscribe(res => {
       this.rovers = res.rovers;
       this.roversLoaded = true;
@@ -66,7 +71,6 @@ export class CockpitComponent implements OnInit {
       }
       this.sliceTo = minMax[1];
       this.sliceFrom = minMax[0];
-      console.log('from: ' + this.sliceFrom + ' to: ' + this.sliceTo);
       const temp = this.allImages;
       this.images = temp.slice(minMax[0], minMax[1]);
     }
@@ -74,16 +78,20 @@ export class CockpitComponent implements OnInit {
   }
 
   getSolsOfRoverArray(): void{
+    this.solsOfRoverArrayLoaded = false;
     const solsArray = [];
-    let currentRoverIndex;
-    for (const rvr of this.rovers){
-      if (rvr.name === this.selectedRover){
-        currentRoverIndex = this.rovers.indexOf(rvr);
+    this.marsImageService.getSolsThatHavePhotos(this.selectedRover).subscribe(object => {
+      this.imageManifest = object.photo_manifest.photos;
+      for (const manifest of this.imageManifest){
+        solsArray.push(manifest.sol);
       }
-    }
-    for (let i = 0; i < this.rovers[currentRoverIndex].max_sol; i++){
-      solsArray.push(i);
-    }
-    this.solsOfRoverArray = solsArray;
+      this.solsOfRoverArray = solsArray;
+      this.solsOfRoverArrayLoaded = true;
+      this.changeCorrespondingEarthDate();
+    });
+  }
+
+  changeCorrespondingEarthDate(): void {
+    this.earthDateCorrespondingWithSol = this.imageManifest[this.solsOfRoverArray.indexOf(Number(this.solNumber))].earth_date;
   }
 }
