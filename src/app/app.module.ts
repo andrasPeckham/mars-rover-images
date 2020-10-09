@@ -9,6 +9,7 @@ import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import { LeftRightArrowsComponent } from './components/cockpit/left-right-arrows/left-right-arrows.component';
+import { ImageModalComponent } from './components/image/image-modal/image-modal.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { LeftRightArrowsComponent } from './components/cockpit/left-right-arrows
     CockpitComponent,
     ImagesContainerComponent,
     ImageComponent,
-    LeftRightArrowsComponent
+    LeftRightArrowsComponent,
+    ImageModalComponent
   ],
   imports: [
     BrowserModule,

@@ -23,6 +23,9 @@ export class MarsImageService {
     return this.http.get<ImagesResult>(this.roversUrl + '/' + rover.toLowerCase()
       + this.photos + this.apiKey + this.sol + sol);
   }
+  getSolsThatHavePhotos(): Observable<any>{
+
+  }
   getLatestPhotos(): Observable<ImagesResult>{
     // https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/latest_photos?api_key=E3qash6cEd3SaoTdIjTyHjGzJHF2INcONp9uG5yj
     return this.http.get<ImagesResult>('https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/latest_photos?api_key=E3qash6cEd3SaoTdIjTyHjGzJHF2INcONp9uG5yj');

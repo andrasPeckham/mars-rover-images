@@ -20,6 +20,9 @@
   background: coral;
 }
 .submit:active{
+  background: coral;
+}
+.submit:hover{
   background: lightsalmon;
 }
 .form-control{
@@ -38,6 +41,9 @@
 }
 .un-selected:active{
   background: coral;
+}
+.un-selected:hover{
+  background: lightsalmon;
 }
 summary:focus{
   outline: none;

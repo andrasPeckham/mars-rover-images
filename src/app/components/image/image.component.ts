@@ -8,6 +8,8 @@ import {MarsImage} from '../../models/mars-image';
 })
 export class ImageComponent implements OnInit {
   @Input() image: MarsImage;
+  showModal = false;
+
   constructor() { }
 
   ngOnInit(): void {
