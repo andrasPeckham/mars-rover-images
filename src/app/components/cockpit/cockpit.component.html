@@ -15,20 +15,15 @@
         <p class="labels">Cameras:</p>
         <button
           class="button"
-          (click)="selectedCamera = 'all';"
+          (click)="selectedCamera = 'all'; getSolsOfRoverArray();"
           [ngClass]="selectedCamera == 'all' ? 'selected' : 'un-selected'"
         >All cameras</button>
         <br>
         <button
           class="button"
           *ngFor="let roverCamera of roverCameras"
-          (click)="selectedCamera = roverCamera.name;"
-          [ngClass]="selectedCamera == roverCamera.name ? 'selected' : 'un-selected'"
-        > {{ roverCamera.name }}</button>
-        <button
-          class="button"
-          *ngFor="let roverCamera of roverCameras"
-          (click)="selectedCamera = roverCamera.name;"
+          (click)="selectedCamera = roverCamera.name; getSolsOfRoverArray()"
+          title="{{ roverCamera.full_name }}"
           [ngClass]="selectedCamera == roverCamera.name ? 'selected' : 'un-selected'"
         > {{ roverCamera.name }}</button>
       </div>
@@ -40,7 +35,7 @@
             It is one of several units for timekeeping on Mars.</p>
         </details>
         <p *ngIf="!solsOfRoverArrayLoaded" style="color: coral">Loading sols...</p>
-        <select class="custom-select-sm" [(ngModel)]="solNumber" (change)="changeCorrespondingEarthDate()">
+        <select *ngIf="solsOfRoverArrayLoaded" class="custom-select-sm" [(ngModel)]="solNumber" (change)="changeCorrespondingEarthDate()">
           <option *ngFor="let sol of solsOfRoverArray">{{sol}}</option>
         </select>
         <p style="margin-top: 10px">Corresponding earth date: {{ earthDateCorrespondingWithSol }}</p>

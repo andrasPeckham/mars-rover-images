@@ -18,15 +18,20 @@ export class MarsImageService {
   apiKey = '?api_key=E3qash6cEd3SaoTdIjTyHjGzJHF2INcONp9uG5yj';
   manifests = '/manifests/';
 
-
   constructor(private http: HttpClient) { }
 
   getRovers(): Observable<Result>{
     return this.http.get<Result>(this.nasaApiUrl + this.roversUrl +  this.apiKey);
   }
-  getPhotos(rover: string, sol: number): Observable<ImagesResult>{
+  getPhotos(rover: string, sol: number, camera: string): Observable<ImagesResult>{
+    if (camera === 'all'){
+      camera = '';
+    } else {
+      const temp = camera;
+      camera = '&camera=' + temp;
+    }
     return this.http.get<ImagesResult>(this.nasaApiUrl + this.roversUrl  + rover
-      + this.photos + this.apiKey + this.sol + sol);
+      + this.photos + this.apiKey + this.sol + sol + camera);
   }
   getSolsThatHavePhotos(rover: string): Observable<PhotoManifestResult>{
     return this.http.get<PhotoManifestResult>(this.nasaApiUrl + this.manifests + rover + this.apiKey);

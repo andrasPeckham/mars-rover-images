@@ -1,7 +1,7 @@
-<div id="myModal" class="modal" (click)="closeModal()">
+<div id="myModal" class="modal">
   <div class="modal-content">
     <img src="{{imgSrc}}">
-    <p class="close">x</p>
+    <p class="close" (click)="closeModal()">x</p>
     <div class="triangle-left" (click)="changeImgTo('prev')"></div>
     <div class="triangle-right" (click)="changeImgTo('next')"></div>
   </div>

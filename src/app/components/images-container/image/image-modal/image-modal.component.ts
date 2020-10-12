@@ -10,6 +10,8 @@ export class ImageModalComponent implements OnInit {
   @Output() closeButton: EventEmitter<any> = new EventEmitter<any>();
   @Output() imgDirection: EventEmitter<string> = new EventEmitter<string>();
 
+  loggedClicks: string[] = [];
+
   constructor() { }
 
   ngOnInit(): void {

@@ -17,21 +17,22 @@ export class CockpitComponent implements OnInit {
   allImages: MarsImage[] = [];
   imageManifest: Photo[];
   solsOfRoverArray: number[];
-  solsOfRoverArrayLoaded: boolean;
-  earthDateCorrespondingWithSol: Date;
 
   roversLoaded: boolean;
   imagesLoaded: boolean;
   searchCameras: boolean;
+  solsOfRoverArrayLoaded: boolean;
+  firstload: boolean;
 
   selectedRover: string;
-  selectedCamera: string;
+  selectedCamera = 'all';
 
-  solNumber = 0;
+  earthDateCorrespondingWithSol: Date;
+
   imagesPerPage;
+  solNumber = 0;
   sliceFrom = 0;
   sliceTo = 100;
-  firstload: boolean;
 
   constructor(private marsImageService: MarsImageService) { }
 
@@ -39,7 +40,7 @@ export class CockpitComponent implements OnInit {
     this.firstload = true;
     this.roversLoaded = false;
     this.imagesLoaded = true;
-    this.imagesPerPage = 5;
+    this.imagesPerPage = 25;
     this.solsOfRoverArrayLoaded = false;
     this.marsImageService.getRovers().subscribe(res => {
       this.rovers = res.rovers;
@@ -56,7 +57,7 @@ export class CockpitComponent implements OnInit {
 
   refreshImages(): void {
     this.imagesLoaded = false;
-    this.marsImageService.getPhotos(this.selectedRover, this.solNumber).subscribe(imgRes => {
+    this.marsImageService.getPhotos(this.selectedRover, this.solNumber, this.selectedCamera).subscribe(imgRes => {
       this.allImages = imgRes.photos;
       if (this.imagesPerPage === 'Show all'){
         this.images = this.allImages;
@@ -90,7 +91,13 @@ export class CockpitComponent implements OnInit {
     this.marsImageService.getSolsThatHavePhotos(this.selectedRover).subscribe(object => {
       this.imageManifest = object.photo_manifest.photos;
       for (const manifest of this.imageManifest){
-        solsArray.push(manifest.sol);
+        if (this.selectedCamera === 'all'){
+          solsArray.push(manifest.sol);
+        } else {
+          if (manifest.cameras.includes(this.selectedCamera)) {
+            solsArray.push(manifest.sol);
+          }
+        }
       }
       this.solsOfRoverArray = solsArray;
       this.solsOfRoverArrayLoaded = true;
