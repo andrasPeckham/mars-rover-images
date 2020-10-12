@@ -2,7 +2,7 @@
   <div class="container">
     <h3>Select which images to list</h3>
     <hr>
-    <p>Rover:</p>
+    <p class="labels">Rover:</p>
     <p *ngIf="!roversLoaded" style="color: coral;">Loading rovers...</p>
     <button
       class="button"
@@ -11,6 +11,27 @@
       [ngClass]="selectedRover == rover.name ? 'selected' : 'un-selected'"
     > {{ rover.name }}</button>
     <div class="searchParams">
+      <div>
+        <p class="labels">Cameras:</p>
+        <button
+          class="button"
+          (click)="selectedCamera = 'all';"
+          [ngClass]="selectedCamera == 'all' ? 'selected' : 'un-selected'"
+        >All cameras</button>
+        <br>
+        <button
+          class="button"
+          *ngFor="let roverCamera of roverCameras"
+          (click)="selectedCamera = roverCamera.name;"
+          [ngClass]="selectedCamera == roverCamera.name ? 'selected' : 'un-selected'"
+        > {{ roverCamera.name }}</button>
+        <button
+          class="button"
+          *ngFor="let roverCamera of roverCameras"
+          (click)="selectedCamera = roverCamera.name;"
+          [ngClass]="selectedCamera == roverCamera.name ? 'selected' : 'un-selected'"
+        > {{ roverCamera.name }}</button>
+      </div>
       <div>
         <details>
           <summary class="labels">Sol:</summary>

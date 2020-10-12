@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {MarsRover} from '../../models/mars-rover';
+import {MarsRover} from '../../models/RoverResult/mars-rover';
 import {MarsImageService} from '../../services/mars-image.service';
-import {MarsImage} from '../../models/mars-image';
+import {MarsImage} from '../../models/PhotoResult/mars-image';
 import {Photo} from '../../models/photo';
+import {Camera} from '../../models/camera';
 
 @Component({
   selector: 'app-cockpit',
@@ -11,6 +12,7 @@ import {Photo} from '../../models/photo';
 })
 export class CockpitComponent implements OnInit {
   rovers: MarsRover[];
+  roverCameras: Camera[];
   images: MarsImage[] = [];
   allImages: MarsImage[] = [];
   imageManifest: Photo[];
@@ -20,7 +22,11 @@ export class CockpitComponent implements OnInit {
 
   roversLoaded: boolean;
   imagesLoaded: boolean;
+  searchCameras: boolean;
+
   selectedRover: string;
+  selectedCamera: string;
+
   solNumber = 0;
   imagesPerPage;
   sliceFrom = 0;
@@ -45,6 +51,7 @@ export class CockpitComponent implements OnInit {
 
   roverSelected(): void{
     this.getSolsOfRoverArray();
+    this.getCamerasOfRover();
   }
 
   refreshImages(): void {
@@ -93,5 +100,15 @@ export class CockpitComponent implements OnInit {
 
   changeCorrespondingEarthDate(): void {
     this.earthDateCorrespondingWithSol = this.imageManifest[this.solsOfRoverArray.indexOf(Number(this.solNumber))].earth_date;
+  }
+
+  private getCamerasOfRover(): void {
+    let indexOfRover;
+    for (const rover of this.rovers){
+      if (rover.name === this.selectedRover){
+        indexOfRover = this.rovers.indexOf(rover);
+      }
+    }
+    this.roverCameras = this.rovers[indexOfRover].cameras;
   }
 }

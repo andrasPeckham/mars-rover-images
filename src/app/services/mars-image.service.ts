@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {MarsImage} from '../models/mars-image';
-import {Result} from '../models/result';
-import {ImagesResult} from '../models/images-result';
-import {PhotoManifest} from '../models/photo-manifest';
-import {PhotoManifestResult} from '../models/photo-manifest-result';
+import {MarsImage} from '../models/PhotoResult/mars-image';
+import {Result} from '../models/RoverResult/result';
+import {ImagesResult} from '../models/PhotoResult/images-result';
+import {PhotoManifest} from '../models/ManifestResult/photo-manifest';
+import {PhotoManifestResult} from '../models/ManifestResult/photo-manifest-result';
 
 @Injectable({
   providedIn: 'root'

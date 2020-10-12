@@ -1,5 +1,5 @@
-import {Camera} from './camera';
-import {MarsRover} from './mars-rover';
+import {Camera} from '../camera';
+import {MarsRover} from '../RoverResult/mars-rover';
 
 export class MarsImage {
  id: number;
