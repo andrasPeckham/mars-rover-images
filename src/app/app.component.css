@@ -3,4 +3,6 @@
   text-align: center;
   color: coral;
   font-size: 60px;
+  cursor: pointer;
+  outline: none;
 }

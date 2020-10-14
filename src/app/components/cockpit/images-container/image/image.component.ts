@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {MarsImage} from '../../../models/PhotoResult/mars-image';
+import {MarsImage} from '../../../../models/PhotoResult/mars-image';
 
 @Component({
   selector: 'app-image',

@@ -4,6 +4,7 @@ import {MarsImageService} from '../../services/mars-image.service';
 import {MarsImage} from '../../models/PhotoResult/mars-image';
 import {Photo} from '../../models/photo';
 import {Camera} from '../../models/camera';
+import {element} from 'protractor';
 
 @Component({
   selector: 'app-cockpit',
