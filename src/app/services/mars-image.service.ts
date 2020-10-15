@@ -30,6 +30,9 @@ export class MarsImageService {
   getSolsThatHavePhotos(rover: string): Observable<PhotoManifestResult>{
     return this.http.get<PhotoManifestResult>(this.nasaApiUrl + this.manifests + rover + this.apiKey);
   }
+  getEarthDatesThatHavePhotos(rover: string): Observable<PhotoManifestResult>{
+    return this.http.get<PhotoManifestResult>(this.nasaApiUrl + this.manifests + rover + this.apiKey);
+  }
   // getLatestPhotos(): Observable<ImagesResult>{
   //   // https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/latest_photos?api_key=E3qash6cEd3SaoTdIjTyHjGzJHF2INcONp9uG5yj
   //   return this.http.get<ImagesResult>

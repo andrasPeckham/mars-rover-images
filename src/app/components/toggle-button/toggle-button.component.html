@@ -1,0 +1,12 @@
+<div class="slider-outer">
+  <p>{{ leftText }}</p>
+  <div class="toggle-outer">
+    <div class="toggle-slider">
+      <div class="toggle-head"
+           (click)="emitToggleEvent()"
+           [ngClass]="toggled ? 'toggle' : 'un-toggle'"  ></div>
+    </div>
+  </div>
+  <p>{{ rightText }}</p>
+</div>
+

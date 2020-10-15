@@ -28,18 +28,31 @@
             [ngClass]="selectedCamera == roverCamera.name ? 'selected' : 'un-selected'"
           > {{ roverCamera.name }}</button>
         </div>
-        <div>
-          <details>
-            <summary class="labels">Sol:</summary>
-            <p>Sol (borrowed from the Latin word for sun) is a solar day on Mars; that is, a Mars-day.
-              A sol is the apparent interval between two successive returns of the Sun to the same meridian (sundial time) as seen by an observer on Mars.
-              It is one of several units for timekeeping on Mars.</p>
-          </details>
-          <p *ngIf="!solsOfRoverArrayLoaded" style="color: coral">Loading sols...</p>
-          <select *ngIf="solsOfRoverArrayLoaded" class="custom-select-sm" [(ngModel)]="solNumber" (change)="changeCorrespondingEarthDate()">
-            <option *ngFor="let sol of solsOfRoverArray">{{sol}}</option>
-          </select>
-          <p style="margin-top: 10px">Corresponding earth date: {{ earthDateCorrespondingWithSol }}</p>
+        <app-toggle-button [leftText]="'Sols'" [rightText]="'Earth date'" (toggleEvent)="getEarthDaySelectedValue($event); logEarthDateSelected()"></app-toggle-button>
+        <div *ngIf="!earthDateSelected" style="background: #dbdbdb; border-radius: 10px">
+          <div style="margin: 10px">
+            <details>
+              <summary class="labels">Sol:</summary>
+              <p>Sol (borrowed from the Latin word for sun) is a solar day on Mars; that is, a Mars-day.
+                A sol is the apparent interval between two successive returns of the Sun to the same meridian (sundial time) as seen by an observer on Mars.
+                It is one of several units for timekeeping on Mars.</p>
+            </details>
+            <p *ngIf="!solsOfRoverArrayLoaded" style="color: coral">Loading sols...</p>
+            <select *ngIf="solsOfRoverArrayLoaded" class="custom-select-sm" [(ngModel)]="solNumber" (change)="changeCorrespondingEarthDate()">
+              <option *ngFor="let sol of solsOfRoverArray">{{sol}}</option>
+            </select>
+            <p style="margin-top: 10px">Corresponding earth date: <strong>{{ earthDateCorrespondingWithSol | date}}</strong></p>
+          </div>
+        </div>
+        <div *ngIf="earthDateSelected" style="background: #dbdbdb; border-radius: 10px">
+          <div style="margin: 10px">
+            <label>Earth date:</label><br>
+            <p *ngIf="!solsOfRoverArrayLoaded" style="color: coral">Loading sols...</p>
+            <select *ngIf="solsOfRoverArrayLoaded" class="custom-select-sm" [(ngModel)]="solNumber" (change)="changeCorrespondingEarthDate()">
+              <option *ngFor="let sol of solsOfRoverArray">{{sol}}</option>
+            </select>
+            <p style="margin-top: 10px">Corresponding Sol: <strong>{{ earthDateCorrespondingWithSol | date}}</strong></p>
+          </div>
         </div>
         <div>
           <p class="labels">Max number of images per page:</p>
@@ -50,7 +63,6 @@
             <option>Show all</option>
           </select>
         </div>
-      </div>
       <hr>
       <button class="button submit" (click)="refreshImages()">Submit</button>
     </div>
