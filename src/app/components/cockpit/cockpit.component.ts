@@ -26,7 +26,7 @@ export class CockpitComponent implements OnInit {
   firstload: boolean;
 
   selectedRover: string;
-  selectedCamera = 'all';
+  selectedCamera = '';
 
   earthDateCorrespondingWithSol: Date;
 
@@ -58,6 +58,11 @@ export class CockpitComponent implements OnInit {
 
   refreshImages(): void {
     this.imagesLoaded = false;
+    let tempSelectedcamera;
+    if (this.selectedCamera !== ''){
+      tempSelectedcamera = this.selectedCamera;
+      this.selectedCamera = '&camera=' + tempSelectedcamera;
+    }
     this.marsImageService.getPhotos(this.selectedRover, this.solNumber, this.selectedCamera).subscribe(imgRes => {
       this.allImages = imgRes.photos;
       if (this.imagesPerPage === 'Show all'){
@@ -70,6 +75,7 @@ export class CockpitComponent implements OnInit {
       this.imagesLoaded = true;
       this.firstload = false;
     });
+    this.selectedCamera = tempSelectedcamera;
   }
 
   changeSlice(minMax: number[]): void{

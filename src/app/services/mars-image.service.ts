@@ -24,12 +24,6 @@ export class MarsImageService {
     return this.http.get<Result>(this.nasaApiUrl + this.roversUrl +  this.apiKey);
   }
   getPhotos(rover: string, sol: number, camera: string): Observable<ImagesResult>{
-    if (camera === 'all'){
-      camera = '';
-    } else {
-      const temp = camera;
-      camera = '&camera=' + temp;
-    }
     return this.http.get<ImagesResult>(this.nasaApiUrl + this.roversUrl  + rover
       + this.photos + this.apiKey + this.sol + sol + camera);
   }

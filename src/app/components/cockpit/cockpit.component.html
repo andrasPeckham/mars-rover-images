@@ -16,8 +16,8 @@
           <p class="labels">Cameras:</p>
           <button
             class="button"
-            (click)="selectedCamera = 'all'; getSolsOfRoverArray();"
-            [ngClass]="selectedCamera == 'all' ? 'selected' : 'un-selected'"
+            (click)="selectedCamera = ''; getSolsOfRoverArray();"
+            [ngClass]="selectedCamera == '' ? 'selected' : 'un-selected'"
           >All cameras</button>
           <br>
           <button
