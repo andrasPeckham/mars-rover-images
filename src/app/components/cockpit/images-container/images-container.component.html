@@ -1,5 +1,7 @@
 <div class="cnt">
-  <p *ngIf="!imagesLoaded" style="color: white">Images loading...</p>
+  <div *ngIf="!imagesLoaded" class="loadingDiv">
+    <i class="fa fa-refresh fa-spin loadingComponent"></i>
+  </div>
   <p *ngIf="images.length == 0 && !firstLoad && imagesLoaded" style="color: white">Sorry, there were no rover pictures taken on that day, with that camera.</p>
   <app-image *ngFor="let image of images" [image]="image"></app-image>
 </div>

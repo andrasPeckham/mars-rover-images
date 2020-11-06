@@ -28,7 +28,6 @@
   margin-bottom: 0px;
 }
 .labels{
-
   margin-bottom: 5px;
 }
 .selected{
@@ -52,4 +51,7 @@ h3{
 }
 .custom-select-sm{
   border-radius: 10px;
+}
+.loadingComponent{
+  color: coral;
 }

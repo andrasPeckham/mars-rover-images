@@ -1,10 +1,13 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <div class="outer-container">
   <div class="container" >
     <h3>Select which images to list</h3>
     <hr>
     <div>
       <p class="labels">Rover:</p>
-      <p *ngIf="!roversLoaded" style="color: coral;">Loading rovers...</p>
+      <div *ngIf="!roversLoaded">
+        <i class="fa fa-refresh fa-spin loadingComponent"></i>
+      </div>
       <button
         class="button"
         *ngFor="let rover of rovers"
@@ -37,7 +40,9 @@
                 A sol is the apparent interval between two successive returns of the Sun to the same meridian (sundial time) as seen by an observer on Mars.
                 It is one of several units for timekeeping on Mars.</p>
             </details>
-            <p *ngIf="!solsOfRoverArrayLoaded" style="color: coral">Loading sols...</p>
+            <div *ngIf="!solsOfRoverArrayLoaded">
+              <i class="fa fa-refresh fa-spin loadingComponent"></i>
+            </div>
             <select *ngIf="solsOfRoverArrayLoaded" class="custom-select-sm" [(ngModel)]="solNumber" (change)="changeCorrespondingEarthDate()">
               <option *ngFor="let sol of solsOfRoverArray">{{sol}}</option>
             </select>
@@ -47,7 +52,9 @@
         <div *ngIf="earthDateSelected" style="background: #dbdbdb; border-radius: 10px">
           <div style="margin: 10px">
             <label>Earth date:</label><br>
-            <p *ngIf="!solsOfRoverArrayLoaded" style="color: coral">Loading sols...</p>
+            <div *ngIf="!solsOfRoverArrayLoaded">
+              <i class="fa fa-refresh fa-spin loadingComponent"></i>
+            </div>
             <select *ngIf="solsOfRoverArrayLoaded" class="custom-select-sm" [(ngModel)]="solNumber" (change)="changeCorrespondingEarthDate()">
               <option *ngFor="let sol of solsOfRoverArray">{{sol}}</option>
             </select>
