@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, HostListener, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-home',
@@ -6,13 +6,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
+  screenHeight;
+  screenWidth;
+  marsImageCenter;
   constructor() { }
 
-  const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
-  const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
+  @HostListener('window:resize', ['$event'])
+  onResize(event?): void {
+    this.screenHeight = window.innerHeight;
+    this.screenWidth = window.innerWidth;
+    this.marsImageCenter = 0.50 * this.screenWidth + 0.4 * this.screenHeight;
+  }
 
   ngOnInit(): void {
+    this.screenHeight = window.innerHeight;
+    this.screenWidth = window.innerWidth;
+    this.marsImageCenter = 0.50 * this.screenWidth + 0.4 * this.screenHeight;
   }
 
 }
