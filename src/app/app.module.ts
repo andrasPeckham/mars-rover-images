@@ -15,6 +15,7 @@ import {RouterModule, Routes} from '@angular/router';
 import { TopMenuComponent } from './components/top-menu/top-menu.component';
 import { AboutComponent } from './components/about/about.component';
 import { ToggleButtonComponent } from './components/toggle-button/toggle-button.component';
+import { HomeComponent } from './components/home/home.component';
 
 const appRoutes: Routes = [
   {path: '', component: WelcomeComponent},
@@ -33,7 +34,8 @@ const appRoutes: Routes = [
     WelcomeComponent,
     TopMenuComponent,
     AboutComponent,
-    ToggleButtonComponent
+    ToggleButtonComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
