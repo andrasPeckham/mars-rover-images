@@ -8,3 +8,25 @@
 .svgs{
   background-image: linear-gradient(#434343, #333333);
 }
+
+.mars-circles{
+  stroke-linecap: round;
+}
+.forwards{
+  animation: rotate-forwards 100s linear infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.backwards{
+  animation: rotate-backwards 100s linear infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+@keyframes rotate-forwards {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@keyframes rotate-backwards {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}

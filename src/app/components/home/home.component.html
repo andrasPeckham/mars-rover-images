@@ -1,11 +1,15 @@
-<svg class="svgs" height="100vh" width="100vw">
+<svg class="svgs" height="100vh" width="100vw" (mouseover)="overSvg = true" (mouseleave)="overSvg = false">
   <circle  cx="35vw" cy="0vh" r="90vh" fill="rgba(0,0,0,0.15)" />
   <circle  cx="70vw" cy="110vh" r="70vh" fill="rgba(0,0,0,0.15)" />
-  <circle stroke-dasharray="20, 30" [attr.cx]="marsImageCenter" cy="50vh" r="45vh" stroke="rgba(255,255,255,0.3)" stroke-width="3" fill="none" />
-<!--  <circle stroke-dasharray="5, 30" cx="70vw" cy="50vh" r="65vh" stroke="white" stroke-width="3" fill="none" />-->
-<!--  <circle stroke-dasharray="5, 30" cx="70vw" cy="50vh" r="65vh" stroke="white" stroke-width="3" fill="none" />-->
-<!--  <circle stroke-dasharray="5, 30" cx="70vw" cy="50vh" r="50vh" stroke="white" stroke-width="3" fill="none" />-->
-<!--  <circle stroke-dasharray="5, 30" cx="70vw" cy="50vh" r="50vh" stroke="white" stroke-width="3" fill="none" />-->
-<!--  <circle stroke-dasharray="5, 30" cx="70vw" cy="50vh" r="50vh" stroke="white" stroke-width="3" fill="none" />-->
+  <circle class="mars-circles" *ngFor="let circle of marsCircles"
+          [ngClass]="generateIsForWardMovingBool()? 'forwards' : 'backwards'"
+          [ngStyle]="{'animation-duration':generateRandomSpeed()+'s'}"
+          [attr.stroke-dasharray]="circle.dashArray"
+          [attr.cx]="marsImageCenter"
+          cy="50vh"
+          [attr.r]="circle.radius"
+          stroke="rgba(255,255,255,0.1)"
+          [attr.stroke-width]="circle.strokeWidth"
+          fill="none"/>
 </svg>
 <img #marsimage class="mars-img" src="../../../assets/images/mars-globe-valles-marineris-enhanced_3.png">
