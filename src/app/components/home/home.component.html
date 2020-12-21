@@ -1,3 +1,16 @@
+<div class="outer-layer">
+  <div class="menu">
+    <h2 class="menu-option">Home</h2>
+    <h2 class="menu-option">Images</h2>
+    <h2 class="menu-option">NASA</h2>
+    <h2 class="menu-option">Rovers</h2>
+  </div>
+  <div class="texts-and-button">
+    <h2 class="primary-text">Explore Mars</h2>
+    <h3 class="secondary-text">Images directly from the NASA rovers</h3>
+    <button class="start-exploring-btn">Start exploring</button>
+  </div>
+</div>
 <svg class="svgs" height="100vh" width="100vw" (mouseover)="overSvg = true" (mouseleave)="overSvg = false">
   <circle  cx="35vw" cy="0vh" r="90vh" fill="rgba(0,0,0,0.15)" />
   <circle  cx="70vw" cy="110vh" r="70vh" fill="rgba(0,0,0,0.15)" />
@@ -6,7 +19,7 @@
           [ngStyle]="{'animation-duration':generateRandomSpeed()+'s'}"
           [attr.stroke-dasharray]="circle.dashArray"
           [attr.cx]="marsImageCenter"
-          cy="50vh"
+          cy="55vh"
           [attr.r]="circle.radius"
           stroke="rgba(255,255,255,0.1)"
           [attr.stroke-width]="circle.strokeWidth"

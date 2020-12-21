@@ -1,14 +1,62 @@
+h2{
+  color: whitesmoke;
+}
+.menu{
+  position: absolute;
+  display: inline-flex;
+  right: 5vw;
+}
+.menu-option{
+  font-size: 25px;
+  margin-top: 4vh;
+  margin-left: 3vw;
+}
+.outer-layer{
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  color: rgba(0,0,0,0.5);
+  z-index: 2;
+}
+.texts-and-button{
+  top: 35vh;
+  left: 10vw;
+  position: relative;
+  display: inline-block;
+  text-align: center;
+}
+.primary-text{
+  color: whitesmoke;
+  font-size: 50px;
+  margin-bottom: 20px;
+}
+.secondary-text{
+  color: whitesmoke;
+}
+.start-exploring-btn{
+  color: whitesmoke;
+  background: #e86645;
+  border: none;
+  border-radius: 50px;
+  font-size: 20px;
+  padding: 10px 40px 10px 40px;
+  margin-top: 17vh;
+  outline: none;
+}
+.start-exploring-btn:hover{
+  background: #e87355;
+}
 .mars-img{
   position: absolute;
-  top: 10vh;
+  top: 15vh;
   left: 50vw;
   height: 80vh;
   width: 80vh;
+  pointer-events: none;
 }
 .svgs{
   background-image: linear-gradient(#434343, #333333);
 }
-
 .mars-circles{
   stroke-linecap: round;
 }
