@@ -12,7 +12,6 @@ html, body {
 body {
   background: black;
   margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
