@@ -9,7 +9,6 @@ export class HomeComponent implements OnInit {
   screenHeight;
   screenWidth;
   marsImageCenter;
-  overSvg: boolean;
   marsCircles = [
     {dashArray: this.getDashArrayWithGap(5, 10, 1000, 70), radius: '45vh', strokeWidth: '5', forwards: true},
     {dashArray: '3, 10, 3, 10, 3, 10, 3, 10, 3, 10, 3, 10 3, 10, 3, 10, 3, 10, 3, 10, 300, 1000', radius: '50vh', strokeWidth: '3', forwards: false},
@@ -20,9 +19,11 @@ export class HomeComponent implements OnInit {
     {dashArray: '5, 15, 5, 15, 5, 15, 5, 15, 100, 50, 100, 50, 100, 400', radius: '90vh', strokeWidth: '8', forwards: true},
     {dashArray: '600, 600', radius: '110vh', strokeWidth: '9', forwards: false}
   ];
+
   constructor() { }
 
   @ViewChild('circle', {static: true}) circle: ElementRef;
+  @ViewChild('canvas', {static: true}) canvas: ElementRef;
 
   @HostListener('window:resize', ['$event'])
   onResize(event?): void {

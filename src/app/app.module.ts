@@ -12,10 +12,10 @@ import { LeftRightArrowsComponent } from './components/cockpit/left-right-arrows
 import { ImageModalComponent } from './components/cockpit/images-container/image/image-modal/image-modal.component';
 import { WelcomeComponent } from './components/welcome/welcome.component';
 import {RouterModule, Routes} from '@angular/router';
-import { TopMenuComponent } from './components/top-menu/top-menu.component';
 import { AboutComponent } from './components/about/about.component';
 import { ToggleButtonComponent } from './components/toggle-button/toggle-button.component';
 import { HomeComponent } from './components/home/home.component';
+import { StarsComponent } from './components/stars/stars.component';
 
 const appRoutes: Routes = [
   {path: '', component: WelcomeComponent},
@@ -32,10 +32,10 @@ const appRoutes: Routes = [
     LeftRightArrowsComponent,
     ImageModalComponent,
     WelcomeComponent,
-    TopMenuComponent,
     AboutComponent,
     ToggleButtonComponent,
-    HomeComponent
+    HomeComponent,
+    StarsComponent
   ],
   imports: [
     BrowserModule,
