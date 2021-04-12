@@ -15,9 +15,9 @@
 <svg class="svgs" height="150vh" width="100vw">
 <!--  <circle  cx="35vw" cy="0vh" r="90vh" fill="rgba(0,0,0,0.15)" />-->
 <!--  <circle  cx="70vw" cy="110vh" r="70vh" fill="rgba(0,0,0,0.15)" />-->
-  <circle class="mars-circles" *ngFor="let circle of marsCircles"
-          [ngClass]="generateIsForWardMovingBool()? 'forwards' : 'backwards'"
-          [ngStyle]="{'animation-duration':generateRandomSpeed()+'s'}"
+  <circle class="mars-circles" *ngFor="let circle of marsCircles; let i = index"
+          [ngClass]="this.cicrleDirections[i] === true? 'forwards' : 'backwards'"
+          [ngStyle]="{'animation-duration': circleSpeeds[i] + 's'}"
           [attr.stroke-dasharray]="circle.dashArray"
           [attr.cx]="marsImageCenter"
           cy="55vh"

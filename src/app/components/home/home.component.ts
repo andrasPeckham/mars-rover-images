@@ -19,6 +19,8 @@ export class HomeComponent implements OnInit {
     {dashArray: '5, 15, 5, 15, 5, 15, 5, 15, 100, 50, 100, 50, 100, 400', radius: '90vh', strokeWidth: '8', forwards: true},
     {dashArray: '600, 600', radius: '110vh', strokeWidth: '9', forwards: false}
   ];
+  cicrleDirections = [];
+  circleSpeeds = [];
 
   constructor() { }
 
@@ -36,6 +38,10 @@ export class HomeComponent implements OnInit {
     this.screenHeight = window.innerHeight;
     this.screenWidth = window.innerWidth;
     this.marsImageCenter = 0.50 * this.screenWidth + 0.4 * this.screenHeight;
+    this.marsCircles.forEach(circle => {
+      this.cicrleDirections.push(this.generateIsForWardMovingBool());
+      this.circleSpeeds.push(this.generateRandomSpeed());
+    });
   }
 
   getDashArrayWithGap(line: number, gap: number, bigGap: number, repeat: number): string{
