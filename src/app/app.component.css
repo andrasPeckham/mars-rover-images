@@ -10,3 +10,7 @@ body{
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+.content-below-home{
+  position: absolute;
+  top: 100vh;
+}

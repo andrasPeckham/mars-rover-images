@@ -16,6 +16,8 @@ import { AboutComponent } from './components/about/about.component';
 import { ToggleButtonComponent } from './components/toggle-button/toggle-button.component';
 import { HomeComponent } from './components/home/home.component';
 import { StarsComponent } from './components/stars/stars.component';
+import {NgSelectModule} from '@ng-select/ng-select';
+import { MenuBarComponent } from './components/menu-bar/menu-bar.component';
 
 const appRoutes: Routes = [
   {path: '', component: WelcomeComponent},
@@ -35,14 +37,16 @@ const appRoutes: Routes = [
     AboutComponent,
     ToggleButtonComponent,
     HomeComponent,
-    StarsComponent
+    StarsComponent,
+    MenuBarComponent
   ],
   imports: [
     BrowserModule,
     CommonModule,
     HttpClientModule,
     FormsModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    NgSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

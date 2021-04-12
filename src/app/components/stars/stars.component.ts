@@ -16,7 +16,7 @@ export class StarsComponent implements OnInit {
   top: number;
 
   ngOnInit(): void {
-    this.stars = this.generateStars(100);
+    this.stars = this.generateStars(200);
     console.log('INITIAL SCROLL Y', window.scrollY);
     const offsets = this.svg.nativeElement.getBoundingClientRect();
     this.top = offsets.top + window.pageYOffset,

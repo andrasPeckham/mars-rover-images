@@ -40,7 +40,7 @@ h2{
 }
 .start-exploring-btn{
   color: whitesmoke;
-  background: #e86645;
+  background: #c34d2f;
   border: none;
   border-radius: 50px;
   font-size: 20px;
@@ -50,7 +50,7 @@ h2{
   font-family: Sansation-Regular;
 }
 .start-exploring-btn:hover{
-  background: #e87355;
+  background: #e86645;
 }
 .mars-img{
   position: absolute;
@@ -65,7 +65,7 @@ h2{
 /*  background-image: linear-gradient(#434343, #333333);*/
 /*}*/
 .svgs {
-  background: linear-gradient(#0e1011, #1d252b);
+  background:linear-gradient(30deg, rgba(6,6,32,1) 50%, rgba(0,55,87,1) 100%);
 }
 
 .mars-circles{
