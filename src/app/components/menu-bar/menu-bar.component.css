@@ -1,0 +1,47 @@
+.backdrop{
+  background: #c34d2f;
+  border-radius: 20px 20px 0 0;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+}
+.menu-text{
+  color: black;
+  font-size: 30px;
+}
+.rectangle{
+  margin: 120px 60px 120px 60px;
+  cursor: pointer;
+  background-color: #c34d2f;
+  width: 200px;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid black;
+  transition: 0.5s ease-in-out;
+  border-radius: 10px;
+  z-index: 0;
+}
+.rectangle::before{
+  width: 200px;
+  height: 100px;
+}
+.rectangle::after{
+  width: 150px;
+  height: 150px;
+}
+.rectangle::before, .rectangle::after {
+  position: absolute;
+  background: #c34d2f;
+  z-index: -1;
+  transition: 0.5s ease-in-out;
+  content: '';
+}
+.rectangle:hover::before {
+  height: 0px;
+}
+
+.rectangle:hover::after {
+  width: 0px;
+}

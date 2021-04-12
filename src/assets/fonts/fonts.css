@@ -1,0 +1,40 @@
+@font-face {
+  font-family: "Adam-Bold";
+  src: url("src/assets/fonts/Adam/Adam-Bold.ttf") format('truetype');
+}
+@font-face {
+  font-family: "Adam-Light";
+  src: url("src/assets/fonts/Adam/Adam-Light.ttf") format('truetype');
+}
+@font-face {
+  font-family: "Adam-Medium";
+  src: url("src/assets/fonts/Adam/Adam-Medium.ttf") format('truetype');
+}
+@font-face {
+  font-family: "Modern-Sans-Light";
+  src: url("src/assets/fonts/ModernSans/ModernSans-Light.otf") format('truetype');
+}
+@font-face {
+  font-family: "Sansation-Regular";
+  src: url("src/assets/fonts/Sansation/Sansation_Regular.ttf") format('truetype');
+}
+@font-face {
+  font-family: "Sansation-Bold";
+  src: url("src/assets/fonts/Sansation/Sansation_Bold.ttf") format('truetype');
+}
+@font-face {
+  font-family: "Sansation-Bold-Italic";
+  src: url("src/assets/fonts/Sansation/Sansation_Bold_Italic.ttf") format('truetype');
+}
+@font-face {
+  font-family: "Sansation-Italic";
+  src: url("src/assets/fonts/Sansation/Sansation_Italic.ttf") format('truetype');
+}
+@font-face {
+  font-family: "Sansation-Light";
+  src: url("src/assets/fonts/Sansation/Sansation_Light.ttf") format('truetype');
+}
+@font-face {
+  font-family: "Sansation-Light-Italic";
+  src: url("src/assets/fonts/Sansation/Sansation_Light_Italic.ttf") format('truetype');
+}

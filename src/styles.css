@@ -1,11 +1,38 @@
 @import '~bootstrap/dist/css/bootstrap.min.css';
+@import "~@ng-select/ng-select/themes/default.theme.css";
 
 .btn-primary{
   border-radius: 5px;
 }
-body{
-  background: black;
+
+body {
+  margin: 0;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+body::-webkit-scrollbar {
+  display: none;
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.ng-select.modified{
+  width: 200px
+}
+
+.ng-select.modified .ng-select-container{
+  color: whitesmoke;
+  font-family: Sansation-Bold;
+  background: none;
+  border: 0px;
+  border-bottom: 1px solid;
+  border-radius: 0;
+}
+
+.ng-select.modified .ng-option{
+  color: whitesmoke;
+  font-family: Sansation-Bold;
+  background: gray;
+}
+
+.ng-select.modified .ng-clear-wrapper {
+  display: none;
+}

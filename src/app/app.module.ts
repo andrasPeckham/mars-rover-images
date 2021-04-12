@@ -12,9 +12,12 @@ import { LeftRightArrowsComponent } from './components/cockpit/left-right-arrows
 import { ImageModalComponent } from './components/cockpit/images-container/image/image-modal/image-modal.component';
 import { WelcomeComponent } from './components/welcome/welcome.component';
 import {RouterModule, Routes} from '@angular/router';
-import { TopMenuComponent } from './components/top-menu/top-menu.component';
 import { AboutComponent } from './components/about/about.component';
 import { ToggleButtonComponent } from './components/toggle-button/toggle-button.component';
+import { HomeComponent } from './components/home/home.component';
+import { StarsComponent } from './components/stars/stars.component';
+import {NgSelectModule} from '@ng-select/ng-select';
+import { MenuBarComponent } from './components/menu-bar/menu-bar.component';
 
 const appRoutes: Routes = [
   {path: '', component: WelcomeComponent},
@@ -31,16 +34,19 @@ const appRoutes: Routes = [
     LeftRightArrowsComponent,
     ImageModalComponent,
     WelcomeComponent,
-    TopMenuComponent,
     AboutComponent,
-    ToggleButtonComponent
+    ToggleButtonComponent,
+    HomeComponent,
+    StarsComponent,
+    MenuBarComponent
   ],
   imports: [
     BrowserModule,
     CommonModule,
     HttpClientModule,
     FormsModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    NgSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

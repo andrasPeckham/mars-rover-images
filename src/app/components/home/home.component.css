@@ -1,0 +1,91 @@
+/*@import '~src/assets/fonts/fonts.css';*/
+h2{
+  color: whitesmoke;
+}
+.menu{
+  position: absolute;
+  display: inline-flex;
+  right: 5vw;
+}
+.menu-option{
+  font-size: 25px;
+  margin-top: 4vh;
+  margin-left: 3vw;
+  font-family: Sansation-Light;
+}
+.outer-layer{
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  color: rgba(0,0,0,0.5);
+  z-index: 3;
+}
+.texts-and-button{
+  top: 35vh;
+  left: 10vw;
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  z-index: 2;
+}
+.primary-text{
+  color: whitesmoke;
+  font-size: 50px;
+  margin-bottom: 20px;
+  font-family: Sansation-Bold;
+}
+.secondary-text{
+  color: whitesmoke;
+  font-family: Sansation-Regular;
+}
+.start-exploring-btn{
+  color: whitesmoke;
+  background: #c34d2f;
+  border: none;
+  border-radius: 50px;
+  font-size: 20px;
+  padding: 10px 40px 10px 40px;
+  margin-top: 17vh;
+  outline: none;
+  font-family: Sansation-Regular;
+}
+.start-exploring-btn:hover{
+  background: #e86645;
+}
+.mars-img{
+  position: absolute;
+  top: 15vh;
+  left: 50vw;
+  height: 80vh;
+  width: 80vh;
+  pointer-events: none;
+  z-index: 2;
+}
+/*.svgs{*/
+/*  background-image: linear-gradient(#434343, #333333);*/
+/*}*/
+.svgs {
+  background:linear-gradient(30deg, rgba(6,6,32,1) 50%, rgba(0,55,87,1) 100%);
+}
+
+.mars-circles{
+  stroke-linecap: round;
+}
+.forwards{
+  animation: rotate-forwards 100s linear infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.backwards{
+  animation: rotate-backwards 100s linear infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+@keyframes rotate-forwards {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@keyframes rotate-backwards {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}

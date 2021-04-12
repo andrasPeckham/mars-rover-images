@@ -1,11 +1,27 @@
+.background{
+  padding-top: 100px;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: linear-gradient(to bottom right, #191716, #3d3a39);
+  background: #191716;
+}
+.images-text{
+  font-family: Sansation-Bold;
+  font-size: 60px;
+  color: whitesmoke;
+  margin-left: 10vw;
+}
 .outer-container {
   display: flex;
   justify-content: center;
 }
-.container {
-  background: whitesmoke;
-  padding: 30px;
-  border-radius: 10px;
+.search-params{
+  display: flex;
+}
+.search-box{
+  margin: 0 30px 20px 0;
 }
 .button{
   border-radius: 10px;
@@ -16,32 +32,44 @@
   outline: none;
 }
 .submit{
-  background: coral;
+  margin-top: 20px;
+  color: whitesmoke;
+  background: #c34d2f;
+  border: none;
+  border-radius: 50px;
+  font-size: 20px;
+  padding: 10px 40px 10px 40px;
+  outline: none;
+  font-family: Sansation-Regular;
 }
 .submit:active{
-  background: coral;
+  background: #c34d2f;
 }
 .submit:hover{
-  background: lightsalmon;
+  background: #e86645;
 }
 .form-control{
   margin-bottom: 0px;
 }
 .labels{
   margin-bottom: 5px;
+  color: whitesmoke;
+  font-family: Sansation-Bold;
+
 }
+
 .selected{
-  background: coral;
+  background: #c34d2f;
 }
 .un-selected{
   background: white;
   color: black;
 }
 .un-selected:active{
-  background: coral;
+  background: #c34d2f;
 }
 .un-selected:hover{
-  background: lightsalmon;
+  background: #e86645;
 }
 summary:focus{
   outline: none;
@@ -53,5 +81,5 @@ h3{
   border-radius: 10px;
 }
 .loadingComponent{
-  color: coral;
+  color: #c34d2f;
 }

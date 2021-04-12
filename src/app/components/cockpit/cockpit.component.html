@@ -1,82 +1,49 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<div class="outer-container">
-  <div class="container" >
-    <h3>Select which images to list</h3>
-    <hr>
-    <div>
-      <p class="labels">Rover:</p>
-      <div *ngIf="!roversLoaded">
-        <i class="fa fa-refresh fa-spin loadingComponent"></i>
-      </div>
-      <button
-        class="button"
-        *ngFor="let rover of rovers"
-        (click)="selectedRover = rover.name; roverSelected();"
-        [ngClass]="selectedRover == rover.name ? 'selected' : 'un-selected'"
-      > {{ rover.name }}</button>
-      <div class="searchParams">
-        <div>
-          <p class="labels">Cameras:</p>
-          <button
-            class="button"
-            (click)="selectedCamera = ''; getSolsOfRoverArray();"
-            [ngClass]="selectedCamera == '' ? 'selected' : 'un-selected'"
-          >All cameras</button>
-          <br>
-          <button
-            class="button"
-            *ngFor="let roverCamera of roverCameras"
-            (click)="selectedCamera = roverCamera.name; getSolsOfRoverArray()"
-            title="{{ roverCamera.full_name }}"
-            [ngClass]="selectedCamera == roverCamera.name ? 'selected' : 'un-selected'"
-          > {{ roverCamera.name }}</button>
-        </div>
-        <app-toggle-button [leftText]="'Sols'" [rightText]="'Earth date'" (toggleEvent)="getEarthDaySelectedValue($event); logEarthDateSelected()"></app-toggle-button>
-        <div *ngIf="!earthDateSelected" style="background: #dbdbdb; border-radius: 10px">
-          <div style="margin: 10px">
-            <details>
-              <summary class="labels">Sol:</summary>
-              <p>Sol (borrowed from the Latin word for sun) is a solar day on Mars; that is, a Mars-day.
-                A sol is the apparent interval between two successive returns of the Sun to the same meridian (sundial time) as seen by an observer on Mars.
-                It is one of several units for timekeeping on Mars.</p>
-            </details>
-            <div *ngIf="!solsOfRoverArrayLoaded">
-              <i class="fa fa-refresh fa-spin loadingComponent"></i>
-            </div>
-            <select *ngIf="solsOfRoverArrayLoaded" class="custom-select-sm" [(ngModel)]="solNumber" (change)="changeCorrespondingEarthDate()">
-              <option *ngFor="let sol of solsOfRoverArray">{{sol}}</option>
-            </select>
-            <p style="margin-top: 10px">Corresponding earth date: <strong>{{ earthDateCorrespondingWithSol | date}}</strong></p>
+<!--<svg height="100px" width="100vw">-->
+<!--  <circle  cx="15vw" cy="0" r="50px" fill="rgba(255,255,255,1)"/>-->
+<!--</svg>-->
+<div class="background">
+  <div>
+    <h2 class="images-text">IMAGES</h2>
+    <div class="outer-container">
+      <div class="inner-container">
+        <div class="search-params">
+          <div class="search-box">
+            <div class="labels">Rover:</div>
+            <ng-select class="modified"
+                       [items]="rovers"
+                       bindLabel="name"
+                       bindValue="name"
+                       (ngModelChange)="roverSelected()"
+                       [(ngModel)]="selectedRover">
+            </ng-select>
+          </div>
+          <div class="search-box">
+            <div class="labels">Camera:</div>
+            <ng-select class="modified"
+                       [items]="roverCameras"
+                       bindLabel="name"
+                       bindValue="name"
+                       (ngModelChange)="getSolsOfRoverArray()"
+                       [(ngModel)]="selectedCamera">
+            </ng-select>
+          </div>
+          <div class="search-box">
+            <div class="labels">Sol:</div>
+            <ng-select class="modified"
+                       [items]="solsOfRoverArray"
+                       (ngModelChange)="getSolsOfRoverArray()"
+                       [(ngModel)]="solNumber">
+            </ng-select>
           </div>
         </div>
-        <div *ngIf="earthDateSelected" style="background: #dbdbdb; border-radius: 10px">
-          <div style="margin: 10px">
-            <label>Earth date:</label><br>
-            <div *ngIf="!solsOfRoverArrayLoaded">
-              <i class="fa fa-refresh fa-spin loadingComponent"></i>
-            </div>
-            <select *ngIf="solsOfRoverArrayLoaded" class="custom-select-sm" [(ngModel)]="solNumber" (change)="changeCorrespondingEarthDate()">
-              <option *ngFor="let sol of solsOfRoverArray">{{sol}}</option>
-            </select>
-            <p style="margin-top: 10px">Corresponding Sol: <strong>{{ earthDateCorrespondingWithSol | date}}</strong></p>
-            <p style="color: red">/ TODO /</p>
-          </div>
-        </div>
-        <div>
-          <p class="labels">Max number of images per page:</p>
-          <select class="custom-select-sm" [(ngModel)]="imagesPerPage">
-            <option>5</option>
-            <option>25</option>
-            <option>100</option>
-            <option>Show all</option>
-          </select>
-        </div>
-      <hr>
-      <button class="button submit" (click)="refreshImages()">Submit</button>
+        <p class="labels">Corresponding earth date: <strong>{{ earthDateCorrespondingWithSol | date}}</strong></p>
+        <button class="button submit" (click)="refreshImages()">Submit</button>
       </div>
     </div>
   </div>
+  <app-left-right-arrows *ngIf="images.length != 0 && imagesLoaded" [sliceFrom]="sliceFrom" [sliceTo]="sliceTo" [imagesPerPage]="imagesPerPage" (changeScliceTo)="changeSlice($event)"></app-left-right-arrows>
+  <app-images-container [images] = "images" [imagesLoaded] = "imagesLoaded" [firstLoad]="firstload"></app-images-container>
+  <app-left-right-arrows *ngIf="images.length != 0 && imagesLoaded" [sliceFrom]="sliceFrom" [sliceTo]="sliceTo" [imagesPerPage]="imagesPerPage" (changeScliceTo)="changeSlice($event)"></app-left-right-arrows>
+
 </div>
-<app-left-right-arrows *ngIf="images.length != 0 && imagesLoaded" [sliceFrom]="sliceFrom" [sliceTo]="sliceTo" [imagesPerPage]="imagesPerPage" (changeScliceTo)="changeSlice($event)"></app-left-right-arrows>
-<app-images-container [images] = "images" [imagesLoaded] = "imagesLoaded" [firstLoad]="firstload"></app-images-container>
-<app-left-right-arrows *ngIf="images.length != 0 && imagesLoaded" [sliceFrom]="sliceFrom" [sliceTo]="sliceTo" [imagesPerPage]="imagesPerPage" (changeScliceTo)="changeSlice($event)"></app-left-right-arrows>
