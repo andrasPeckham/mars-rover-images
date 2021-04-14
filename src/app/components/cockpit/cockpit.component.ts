@@ -32,7 +32,7 @@ export class CockpitComponent implements OnInit, OnDestroy {
 
   earthDateCorrespondingWithSol: Date;
 
-  imagesPerPage = 30;
+  imagesPerPage = 25;
   solNumber = 0;
   sliceFrom = 0;
   sliceTo = 100;
@@ -65,11 +65,10 @@ export class CockpitComponent implements OnInit, OnDestroy {
   refreshImages(): void {
     this.imagesLoaded = false;
     let tempSelectedcamera;
-    tempSelectedcamera = this.selectedCamera;
     if (this.selectedCamera !== 'All'){
-      this.selectedCamera = '&camera=' + tempSelectedcamera;
+      tempSelectedcamera = this.selectedCamera;
     }
-    this.imagesSubscription = this.marsImageService.getPhotos(this.selectedRover, this.solNumber, this.selectedCamera).subscribe(imgRes => {
+    this.imagesSubscription = this.marsImageService.getPhotos(this.selectedRover, this.solNumber, tempSelectedcamera).subscribe(imgRes => {
       this.allImages = imgRes.photos;
       const temp = this.allImages;
       this.sliceTo = this.imagesPerPage;
@@ -77,7 +76,6 @@ export class CockpitComponent implements OnInit, OnDestroy {
       this.imagesLoaded = true;
       this.firstload = false;
     });
-    this.selectedCamera = tempSelectedcamera;
   }
 
   changeSlice(minMax: number[]): void{
@@ -109,6 +107,7 @@ export class CockpitComponent implements OnInit, OnDestroy {
         }
       }
       this.solsOfRoverArray = solsArray;
+      this.solNumber = this.solsOfRoverArray[0];
       this.solsOfRoverArrayLoaded = true;
       this.changeCorrespondingEarthDate();
     });

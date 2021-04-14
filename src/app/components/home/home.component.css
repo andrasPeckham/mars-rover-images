@@ -8,6 +8,7 @@ h2{
   right: 5vw;
 }
 .menu-option{
+  cursor: pointer;
   font-size: 25px;
   margin-top: 4vh;
   margin-left: 3vw;

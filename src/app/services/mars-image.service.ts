@@ -12,26 +12,49 @@ import {PhotoManifestResult} from '../models/ManifestResult/photo-manifest-resul
 })
 export class MarsImageService {
   nasaApiUrl = 'https://api.nasa.gov/mars-photos/api/v1';
-  roversUrl = '/rovers/';
-  photos = '/photos';
-  sol = '&sol=';
-  apiKey = '?api_key=E3qash6cEd3SaoTdIjTyHjGzJHF2INcONp9uG5yj';
+  apiKey = 'E3qash6cEd3SaoTdIjTyHjGzJHF2INcONp9uG5yj';
   manifests = '/manifests/';
 
   constructor(private http: HttpClient) { }
 
   getRovers(): Observable<Result>{
-    return this.http.get<Result>(this.nasaApiUrl + this.roversUrl +  this.apiKey);
+    return this.http.get<Result>( this.nasaApiUrl + '/rovers', {
+      params: {
+        api_key: this.apiKey
+      }
+    });
   }
-  getPhotos(rover: string, sol: number, camera: string): Observable<ImagesResult>{
-    return this.http.get<ImagesResult>(this.nasaApiUrl + this.roversUrl  + rover
-      + this.photos + this.apiKey + this.sol + sol + camera);
+
+
+  getPhotos(rover: string, sol: number, camera?: string): Observable<ImagesResult>{
+    let params: any;
+    params = {
+      api_key: 'E3qash6cEd3SaoTdIjTyHjGzJHF2INcONp9uG5yj',
+      sol: sol.toString(),
+      page: '1'
+    };
+    if (camera){
+      params.camera = camera.toString();
+    }
+    return this.http.get<ImagesResult>(this.nasaApiUrl + '/rovers/'  + rover
+      + '/photos', {
+      params
+    });
   }
+
   getSolsThatHavePhotos(rover: string): Observable<PhotoManifestResult>{
-    return this.http.get<PhotoManifestResult>(this.nasaApiUrl + this.manifests + rover + this.apiKey);
+    return this.http.get<PhotoManifestResult>(this.nasaApiUrl + '/manifests/' + rover, {
+      params: {
+        api_key: this.apiKey
+      }
+    });
   }
   getEarthDatesThatHavePhotos(rover: string): Observable<PhotoManifestResult>{
-    return this.http.get<PhotoManifestResult>(this.nasaApiUrl + this.manifests + rover + this.apiKey);
+    return this.http.get<PhotoManifestResult>(this.nasaApiUrl + this.manifests + rover, {
+      params: {
+        api_key: this.apiKey
+      }
+    });
   }
   // getLatestPhotos(): Observable<ImagesResult>{
   //   // https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/latest_photos?api_key=E3qash6cEd3SaoTdIjTyHjGzJHF2INcONp9uG5yj

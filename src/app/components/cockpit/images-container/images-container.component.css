@@ -1,5 +1,11 @@
+.outer-cnt{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .cnt{
   text-align: center;
+  width: 80%;
 }
 .loadingComponent{
   text-align: center;
