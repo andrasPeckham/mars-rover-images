@@ -5,7 +5,6 @@ import {MarsImage} from '../../models/PhotoResult/mars-image';
 import {Photo} from '../../models/photo';
 import {Camera} from '../../models/camera';
 import {Subscription} from 'rxjs';
-import * as _ from 'lodash';
 
 @Component({
   selector: 'app-cockpit',
@@ -131,7 +130,9 @@ export class CockpitComponent implements OnInit, OnDestroy {
       rover_id: 0,
       full_name: 'All',
     }];
-    this.roverCameras = _.concat(this.roverCameras, this.rovers[indexOfRover].cameras);
+    this.rovers[indexOfRover].cameras.forEach(camera => {
+      this.roverCameras.push(camera);
+    });
     this.selectedCamera = this.roverCameras[0].name;
   }
 

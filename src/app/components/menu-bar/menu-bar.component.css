@@ -23,12 +23,12 @@
   z-index: 0;
 }
 .rectangle::before{
-  width: 200px;
+  width: 204px;
   height: 100px;
 }
 .rectangle::after{
   width: 150px;
-  height: 150px;
+  height: 154px;
 }
 .rectangle::before, .rectangle::after {
   position: absolute;
