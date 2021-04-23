@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import {Component, OnInit, OnDestroy, ViewChild, ElementRef} from '@angular/core';
 import {MarsRover} from '../../models/RoverResult/mars-rover';
 import {MarsImageService} from '../../services/mars-image.service';
 import {MarsImage} from '../../models/PhotoResult/mars-image';
@@ -17,7 +17,6 @@ import {SolsAndDays} from '../../models/sols-and-days';
 export class CockpitComponent implements OnInit, OnDestroy {
   rovers: MarsRover[];
   roverCameras: Camera[];
-  images: MarsImage[] = [];
   allImages: MarsImage[] = [];
   manifestPhotos: Photo[];
   solsAndDaysOfRover: SolsAndDays;
@@ -34,13 +33,12 @@ export class CockpitComponent implements OnInit, OnDestroy {
   selectedRover: string;
   selectedCamera: string;
 
-  earthDateCorrespondingWithSol: Date;
-
   imagesPerPage = 25;
   solNumber = 0;
-  sliceFrom = 0;
-  sliceTo = 100;
-  pageNumber = 1;
+  pageNumber: number;
+  solOrEarthDate = 'Sols'
+
+  @ViewChild('imagesContainer') imagesContainer: ElementRef;
 
   constructor(private marsImageService: MarsImageService) { }
 
@@ -49,6 +47,7 @@ export class CockpitComponent implements OnInit, OnDestroy {
     this.roversLoaded = false;
     this.imagesLoaded = true;
     this.solsOfRoverArrayLoaded = false;
+    this.pageNumber = 1;
     this.marsImageService.getRovers().pipe(
       take(1)
     ).subscribe(res => {
@@ -88,26 +87,14 @@ export class CockpitComponent implements OnInit, OnDestroy {
       take(1)
     ).subscribe(imgRes => {
       this.allImages = imgRes.photos;
-      const temp = this.allImages;
-      this.sliceTo = this.imagesPerPage;
-      this.images = temp.slice(this.sliceFrom, this.sliceTo);
       this.imagesLoaded = true;
       this.firstload = false;
     });
   }
 
-  changeSlice(minMax: number[]): void{
-    this.imagesLoaded = false;
-    if (minMax[0] >= 0){
-      if (minMax[1] > this.allImages.length){
-        minMax[1] = this.allImages.length;
-      }
-      this.sliceTo = minMax[1];
-      this.sliceFrom = minMax[0];
-      const temp = this.allImages;
-      this.images = temp.slice(minMax[0], minMax[1]);
-    }
-    this.imagesLoaded = true;
+  changePage(changeTo: number): void{
+    this.pageNumber = changeTo;
+    this.searchForImages();
   }
 
   getSolsOfRoverArray(): void{
@@ -129,6 +116,7 @@ export class CockpitComponent implements OnInit, OnDestroy {
         }
       });
       this.solsAndDaysOfRover.sols = sols;
+      this.solsAndDaysOfRover.earthDays = days;
       this.solNumber = this.solsAndDaysOfRover.sols[0];
       this.solsOfRoverArrayLoaded = true;
     });

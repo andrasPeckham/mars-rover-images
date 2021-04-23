@@ -17,7 +17,8 @@ import { ToggleButtonComponent } from './components/toggle-button/toggle-button.
 import { HomeComponent } from './components/home/home.component';
 import { StarsComponent } from './components/stars/stars.component';
 import {NgSelectModule} from '@ng-select/ng-select';
-import { MenuBarComponent } from './components/menu-bar/menu-bar.component';
+import { RoversComponent } from './components/rovers/rovers.component';
+import { AboutNasaComponent } from './components/about-nasa/about-nasa.component';
 
 const appRoutes: Routes = [
   {path: '', component: WelcomeComponent},
@@ -38,7 +39,8 @@ const appRoutes: Routes = [
     ToggleButtonComponent,
     HomeComponent,
     StarsComponent,
-    MenuBarComponent
+    RoversComponent,
+    AboutNasaComponent
   ],
   imports: [
     BrowserModule,

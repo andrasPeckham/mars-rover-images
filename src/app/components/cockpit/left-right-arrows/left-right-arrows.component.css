@@ -16,13 +16,15 @@
 .paging-button:hover{
   font-weight: bolder;
 }
+.single-arrow{
+  font-size: 25px;
+}
 .selected{
   font-weight: bold;
   text-decoration: underline
 }
 .fa-img{
   color: whitesmoke;
-  font-size: 18px;
 }
 .fa-img:hover{
   font-weight: bold;
