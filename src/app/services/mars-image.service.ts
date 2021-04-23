@@ -26,12 +26,12 @@ export class MarsImageService {
   }
 
 
-  getPhotos(rover: string, sol: number, camera?: string): Observable<ImagesResult>{
+  getPhotos(rover: string, sol: number, page: number, camera?: string): Observable<ImagesResult>{
     let params: any;
     params = {
       api_key: 'E3qash6cEd3SaoTdIjTyHjGzJHF2INcONp9uG5yj',
       sol: sol.toString(),
-      page: '1'
+      page: page.toString()
     };
     if (camera){
       params.camera = camera.toString();

@@ -41,8 +41,10 @@
       </div>
     </div>
   </div>
-  <app-left-right-arrows *ngIf="images.length != 0 && imagesLoaded" [totalNumberOfImages]="numberOfPhotosOnSol || 0" [sliceFrom]="sliceFrom" [sliceTo]="sliceTo" [imagesPerPage]="imagesPerPage" (changeScliceTo)="changeSlice($event)"></app-left-right-arrows>
+  <app-left-right-arrows *ngIf="images.length != 0 && imagesLoaded" [pages]="photoPages || 0" [currentPage]="pageNumber"
+                         [sliceFrom]="sliceFrom" [sliceTo]="sliceTo" [imagesPerPage]="imagesPerPage" (changeScliceTo)="changeSlice($event)"></app-left-right-arrows>
   <app-images-container [images] = "images" [imagesLoaded] = "imagesLoaded" [firstLoad]="firstload"></app-images-container>
-  <app-left-right-arrows *ngIf="images.length != 0 && imagesLoaded" [totalNumberOfImages]="numberOfPhotosOnSol || 0" [sliceFrom]="sliceFrom" [sliceTo]="sliceTo" [imagesPerPage]="imagesPerPage" (changeScliceTo)="changeSlice($event)"></app-left-right-arrows>
+  <app-left-right-arrows *ngIf="images.length != 0 && imagesLoaded" [pages]="photoPages || 0" [currentPage]="pageNumber"
+                         [sliceFrom]="sliceFrom" [sliceTo]="sliceTo" [imagesPerPage]="imagesPerPage" (changeScliceTo)="changeSlice($event)"></app-left-right-arrows>
 
 </div>

@@ -49,6 +49,7 @@ h2{
   margin-top: 17vh;
   outline: none;
   font-family: Sansation-Regular;
+  cursor: pointer;
 }
 .start-exploring-btn:hover{
   background: #e86645;

@@ -22,7 +22,7 @@ export class CockpitComponent implements OnInit, OnDestroy {
   manifestPhotos: Photo[];
   solsAndDaysOfRover: SolsAndDays;
   manifestOfRover: PhotoManifestResult;
-  numberOfPhotosOnSol: number;
+  photoPages: number[];
 
   roversLoaded: boolean;
   imagesLoaded: boolean;
@@ -40,6 +40,7 @@ export class CockpitComponent implements OnInit, OnDestroy {
   solNumber = 0;
   sliceFrom = 0;
   sliceTo = 100;
+  pageNumber = 1;
 
   constructor(private marsImageService: MarsImageService) { }
 
@@ -76,10 +77,14 @@ export class CockpitComponent implements OnInit, OnDestroy {
       this.manifestOfRover = manifest;
       const photosForSol = manifest.photo_manifest.photos.find(photos => photos.sol === this.solNumber);
       if (photosForSol) {
-        this.numberOfPhotosOnSol = photosForSol.total_photos;
+        const numberOfPhotosOnSol = Math.ceil(photosForSol.total_photos / 25);
+        this.photoPages = [];
+        for (let i = 1; i <= numberOfPhotosOnSol; i++) {
+          this.photoPages.push(i);
+        }
       }
     });
-    this.marsImageService.getPhotos(this.selectedRover, this.solNumber, tempSelectedcamera).pipe(
+    this.marsImageService.getPhotos(this.selectedRover, this.solNumber, this.pageNumber, tempSelectedcamera).pipe(
       take(1)
     ).subscribe(imgRes => {
       this.allImages = imgRes.photos;
@@ -136,7 +141,6 @@ export class CockpitComponent implements OnInit, OnDestroy {
         indexOfRover = this.rovers.indexOf(rover);
       }
     }
-    // this.roverCameras = this.rovers[indexOfRover].cameras;
     this.roverCameras = [{
       id: 0,
       name: 'All',
