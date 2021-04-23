@@ -31,19 +31,18 @@
           <div class="search-box">
             <div class="labels">Sol:</div>
             <ng-select class="modified"
-                       [items]="solsOfRoverArray"
-                       (ngModelChange)="getSolsOfRoverArray()"
+                       [items]="solsAndDaysOfRover? solsAndDaysOfRover.sols : ['Te kurva']"
                        [(ngModel)]="solNumber">
             </ng-select>
           </div>
         </div>
-        <p class="labels">Corresponding earth date: <strong>{{ earthDateCorrespondingWithSol | date}}</strong></p>
-        <button class="button submit" (click)="refreshImages()">Submit</button>
+<!--        <p class="labels">Corresponding earth date: <strong>{{ solsAndDaysOfRover.earthDays[solsAndDaysOfRover.sols.indexOf(solNumber)] | date}}</strong></p>-->
+        <button class="button submit" (click)="searchForImages()">Submit</button>
       </div>
     </div>
   </div>
-  <app-left-right-arrows *ngIf="images.length != 0 && imagesLoaded" [sliceFrom]="sliceFrom" [sliceTo]="sliceTo" [imagesPerPage]="imagesPerPage" (changeScliceTo)="changeSlice($event)"></app-left-right-arrows>
+  <app-left-right-arrows *ngIf="images.length != 0 && imagesLoaded" [totalNumberOfImages]="numberOfPhotosOnSol || 0" [sliceFrom]="sliceFrom" [sliceTo]="sliceTo" [imagesPerPage]="imagesPerPage" (changeScliceTo)="changeSlice($event)"></app-left-right-arrows>
   <app-images-container [images] = "images" [imagesLoaded] = "imagesLoaded" [firstLoad]="firstload"></app-images-container>
-  <app-left-right-arrows *ngIf="images.length != 0 && imagesLoaded" [sliceFrom]="sliceFrom" [sliceTo]="sliceTo" [imagesPerPage]="imagesPerPage" (changeScliceTo)="changeSlice($event)"></app-left-right-arrows>
+  <app-left-right-arrows *ngIf="images.length != 0 && imagesLoaded" [totalNumberOfImages]="numberOfPhotosOnSol || 0" [sliceFrom]="sliceFrom" [sliceTo]="sliceTo" [imagesPerPage]="imagesPerPage" (changeScliceTo)="changeSlice($event)"></app-left-right-arrows>
 
 </div>

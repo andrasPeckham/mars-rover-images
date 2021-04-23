@@ -9,6 +9,7 @@ export class LeftRightArrowsComponent implements OnInit {
   @Input() imagesPerPage;
   @Input() sliceFrom;
   @Input() sliceTo;
+  @Input() totalNumberOfImages;
 
   @Output() changeScliceTo: EventEmitter<number[]> = new EventEmitter<number[]>();
   constructor() { }

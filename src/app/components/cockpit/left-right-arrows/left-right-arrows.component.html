@@ -2,9 +2,12 @@
   <div class="left-right">
     <div class="triangle-left" (click)="changeSlice(sliceFrom - imagesPerPage, sliceTo - imagesPerPage)"></div>
     <p class="prevNext">Previous {{ imagesPerPage }} </p>
+    <p class="prevNext">TOTAL {{ totalNumberOfImages }} </p>
   </div>
   <div class="left-right">
     <p class="prevNext">Next {{ imagesPerPage }} </p>
+    https://api.nasa.gov/mars-photos/api/v1/manifests/perseverance?api_key=E3qash6cEd3SaoTdIjTyHjGzJHF2INcONp9uG5yj&sol=0
+    get manifest number of photos to display next x pages
     <div class="triangle-right" (click)="changeSlice(sliceFrom + imagesPerPage, sliceTo + imagesPerPage)"></div>
   </div>
 </div>
