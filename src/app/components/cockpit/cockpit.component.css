@@ -1,11 +1,13 @@
 .background{
-  padding-top: 100px;
+  padding-top: 50px;
   width: 100vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background: linear-gradient(to bottom right, #191716, #3d3a39);
-  background: #191716;
+  /*background: linear-gradient(to bottom right, #191716, #3d3a39);*/
+  /*background: #191716;*/
+  /*background:linear-gradient(0deg, rgba(6,6,32,1) 50%, rgba(25, 23, 22 ,1) 100%)*/
+  background:linear-gradient(#060620, #191716);
 }
 .images-text{
   font-family: Sansation-Bold;
@@ -16,12 +18,17 @@
 .outer-container {
   display: flex;
   justify-content: center;
+  margin-bottom: 50px;
 }
 .search-params{
   display: flex;
+  align-items: end;
 }
 .search-box{
   margin: 0 30px 20px 0;
+}
+.modified{
+  cursor: pointer;
 }
 .button{
   border-radius: 10px;
@@ -41,6 +48,7 @@
   padding: 10px 40px 10px 40px;
   outline: none;
   font-family: Sansation-Regular;
+  cursor: pointer;
 }
 .submit:active{
   background: #c34d2f;
@@ -55,7 +63,6 @@
   margin-bottom: 5px;
   color: whitesmoke;
   font-family: Sansation-Bold;
-
 }
 
 .selected{

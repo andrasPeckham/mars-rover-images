@@ -1,0 +1,14 @@
+.outer-cnt{
+  background-color: #c34d2f;
+  height: 1000px;
+}
+.nasa-text-container{
+
+}
+.nasa-text{
+  font-family: Sansation-Bold;
+  font-size: 60px;
+  color: whitesmoke;
+  padding-top: 100px;
+  margin: 0 0 0 10vw;
+}

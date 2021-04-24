@@ -1,36 +1,31 @@
-.left-right{
-  display: flex;
-  margin: 50px;
-}
-.prevNext{
-  color: whitesmoke;
-  margin-left: 10px;
-  margin-right: 10px;
-}
-.prevNextDiv{
+.arrows-div{
   display: flex;
   justify-content: center;
 }
-
-.triangle-left {
-  width: 0;
-  height: 0;
-  border-top: 15px solid transparent;
-  border-right: 30px solid whitesmoke;
-  border-bottom: 15px solid transparent;
-  transition: 0.1s ease-in-out;
+.outer-button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.triangle-right {
-  width: 0;
-  height: 0;
-  border-top: 15px solid transparent;
-  border-left: 30px solid whitesmoke;
-  border-bottom: 15px solid transparent;
-  transition: 0.1s ease-in-out;
+.paging-button{
+  color: whitesmoke;
+  font-size: 18px;
+  padding: 10px;
+  cursor: pointer;
 }
-.triangle-left:hover{
-  border-right: 30px solid #c34d2f;
+.paging-button:hover{
+  font-weight: bolder;
 }
-.triangle-right:hover{
-  border-left: 30px solid #c34d2f;
+.single-arrow{
+  font-size: 25px;
+}
+.selected{
+  font-weight: bold;
+  text-decoration: underline
+}
+.fa-img{
+  color: whitesmoke;
+}
+.fa-img:hover{
+  font-weight: bold;
 }

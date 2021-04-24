@@ -1,10 +1,14 @@
-<div class="prevNextDiv" *ngIf="imagesPerPage != 'Show all'">
-  <div class="left-right">
-    <div class="triangle-left" (click)="changeSlice(sliceFrom - imagesPerPage, sliceTo - imagesPerPage)"></div>
-    <p class="prevNext">Previous {{ imagesPerPage }} </p>
-  </div>
-  <div class="left-right">
-    <p class="prevNext">Next {{ imagesPerPage }} </p>
-    <div class="triangle-right" (click)="changeSlice(sliceFrom + imagesPerPage, sliceTo + imagesPerPage)"></div>
+<div class="arrows-div">
+  <div class="outer-button">
+    <div *ngIf="pages[0] != currentPage" class="paging-button"><i class="fa fa-backward fa-img"></i></div>
+    <div *ngIf="pages[0] != currentPage" class="paging-button"><i class="fa fa-caret-left fa-img single-arrow"></i></div>
+    <div *ngIf="pages.length <= maximumPagesShown; else moreThanFivePages" class="outer-button">
+      <div *ngFor="let page of pages" class="paging-button" [class.selected]="page == currentPage" (click)="changePageTo.emit(page)">{{page}}</div>
+    </div>
+    <ng-template #moreThanFivePages>
+      <div *ngFor="let page of getPagesToDisplay()" class="paging-button" [class.selected]="page == currentPage" (click)="changePageTo.emit(page)">{{page}}</div>
+    </ng-template>
+    <div *ngIf="pages[pages.length - 1] != currentPage" class="paging-button"><i class="fa fa-caret-right fa-img single-arrow"></i></div>
+    <div *ngIf="pages[pages.length - 1] != currentPage" class="paging-button"><i class="fa fa-forward fa-img"></i></div>
   </div>
 </div>
