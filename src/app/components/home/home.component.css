@@ -2,18 +2,6 @@
 h2{
   color: whitesmoke;
 }
-.menu{
-  position: absolute;
-  display: inline-flex;
-  right: 5vw;
-}
-.menu-option{
-  cursor: pointer;
-  font-size: 25px;
-  margin-top: 4vh;
-  margin-left: 3vw;
-  font-family: Sansation-Light;
-}
 .outer-layer{
   position: absolute;
   width: 100vw;

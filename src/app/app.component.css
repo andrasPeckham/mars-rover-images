@@ -14,3 +14,19 @@ body{
   position: absolute;
   top: 100vh;
 }
+.menu{
+  display: flex;
+  position: absolute;
+  float: right;
+  right: 5vw;
+  top: 0px;
+  z-index: 10;
+}
+.menu-option{
+  cursor: pointer;
+  font-size: 25px;
+  margin-top: 4vh;
+  margin-left: 3vw;
+  font-family: Sansation-Light;
+  color: whitesmoke;
+}

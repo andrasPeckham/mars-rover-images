@@ -25,7 +25,7 @@
   cursor: pointer;
   background-color: #c34d2f;
   width: 250px;
-  height: 100px;
+  height: 75px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -39,8 +39,8 @@
   height: 50px;
 }
 .rectangle::after{
-  width: 200px;
-  height: 104px;
+  width: 230px;
+  height: 79px;
 }
 .rectangle::before, .rectangle::after {
   position: absolute;

@@ -21,8 +21,8 @@ import { RoversComponent } from './components/rovers/rovers.component';
 import { AboutNasaComponent } from './components/about-nasa/about-nasa.component';
 
 const appRoutes: Routes = [
-  {path: '', component: WelcomeComponent},
-  {path: 'search', component: CockpitComponent},
+  {path: '', component: HomeComponent},
+  {path: 'images', component: CockpitComponent},
   {path: 'about', component: AboutComponent},
 
 ];
