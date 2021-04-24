@@ -1,8 +1,10 @@
-<div id="myModal" class="modal">
-  <div class="modal-content">
-    <img src="{{imgSrc}}">
-    <p class="close" (click)="closeModal()">x</p>
-    <div class="triangle-left" (click)="changeImgTo('prev')"></div>
-    <div class="triangle-right" (click)="changeImgTo('next')"></div>
+<div id="myModal" class="modal" (click)="closeWindow()">
+<!--  <div class="modal-content" [ngStyle]="{'background' : 'url(' + imgSrc + ')'}">-->
+  <div class="triangle-left triangle" (click)="$event.stopPropagation(); previousImage()"></div>
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <img class="modal-img" src="{{imgSrc}}">
+    <i class="fa fa-times-circle close-btn" (click)=" closeWindow()"></i>
   </div>
+  <div class="triangle-right triangle" (click)="$event.stopPropagation(); nextImage()"></div>
+
 </div>

@@ -8,6 +8,7 @@ import {Subscription} from 'rxjs';
 import {take} from 'rxjs/operators';
 import {PhotoManifestResult} from '../../models/ManifestResult/photo-manifest-result';
 import {SolsAndDays} from '../../models/sols-and-days';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-cockpit',
@@ -32,15 +33,20 @@ export class CockpitComponent implements OnInit, OnDestroy {
 
   selectedRover: string;
   selectedCamera: string;
+  selectedSol = 0;
 
   imagesPerPage = 25;
-  solNumber = 0;
   pageNumber: number;
-  solOrEarthDate = 'Sols'
+
+  loadRoverFromQueryParam: boolean;
+  loadCameraFromQueryParam: boolean;
+  loadSolFromQueryParam: boolean;
 
   @ViewChild('imagesContainer') imagesContainer: ElementRef;
 
-  constructor(private marsImageService: MarsImageService) { }
+  constructor(private marsImageService: MarsImageService,
+              private router: Router,
+              private activeRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.firstload = true;
@@ -48,14 +54,26 @@ export class CockpitComponent implements OnInit, OnDestroy {
     this.imagesLoaded = true;
     this.solsOfRoverArrayLoaded = false;
     this.pageNumber = 1;
+    const {rover, camera, sol} = this.activeRoute.snapshot.queryParams;
+    if ( rover && camera && sol){
+      this.loadRoverFromQueryParam = true;
+      this.loadCameraFromQueryParam = true;
+      this.loadSolFromQueryParam = true;
+      this.selectedRover = rover;
+      this.selectedCamera = camera;
+      this.selectedSol = sol;
+    }
     this.marsImageService.getRovers().pipe(
       take(1)
     ).subscribe(res => {
       this.rovers = res.rovers;
       this.roversLoaded = true;
-      this.selectedRover = this.rovers[this.rovers.length - 1].name;
+      if (!this.loadRoverFromQueryParam){
+        this.selectedRover = this.rovers[this.rovers.length - 1].name;
+      }
       this.roverSelected();
       this.searchForImages();
+      this.loadRoverFromQueryParam = false;
     });
   }
 
@@ -74,7 +92,7 @@ export class CockpitComponent implements OnInit, OnDestroy {
       take(1)
     ).subscribe( manifest => {
       this.manifestOfRover = manifest;
-      const photosForSol = manifest.photo_manifest.photos.find(photos => photos.sol === this.solNumber);
+      const photosForSol = manifest.photo_manifest.photos.find(photos => photos.sol === this.selectedSol);
       if (photosForSol) {
         const numberOfPhotosOnSol = Math.ceil(photosForSol.total_photos / 25);
         this.photoPages = [];
@@ -83,7 +101,7 @@ export class CockpitComponent implements OnInit, OnDestroy {
         }
       }
     });
-    this.marsImageService.getPhotos(this.selectedRover, this.solNumber, this.pageNumber, tempSelectedcamera).pipe(
+    this.marsImageService.getPhotos(this.selectedRover, this.selectedSol, this.pageNumber, tempSelectedcamera).pipe(
       take(1)
     ).subscribe(imgRes => {
       this.allImages = imgRes.photos;
@@ -117,8 +135,11 @@ export class CockpitComponent implements OnInit, OnDestroy {
       });
       this.solsAndDaysOfRover.sols = sols;
       this.solsAndDaysOfRover.earthDays = days;
-      this.solNumber = this.solsAndDaysOfRover.sols[0];
+      if (!this.loadSolFromQueryParam){
+        this.selectedSol = this.solsAndDaysOfRover.sols[0];
+      }
       this.solsOfRoverArrayLoaded = true;
+      this.loadSolFromQueryParam = false;
     });
   }
 
@@ -138,9 +159,15 @@ export class CockpitComponent implements OnInit, OnDestroy {
     this.rovers[indexOfRover].cameras.forEach(camera => {
       this.roverCameras.push(camera);
     });
-    this.selectedCamera = this.roverCameras[0].name;
+    if(!this.loadCameraFromQueryParam){
+      this.selectedCamera = this.roverCameras[0].name;
+    }
+    this.loadCameraFromQueryParam = false;
+  }
+
+  updateQueryParams(): void {
+    this.router.navigate(['images'], {queryParams: {rover: this.selectedRover, camera: this.selectedCamera, sol: this.selectedSol}});
   }
 
   ngOnDestroy(): void{}
-
 }

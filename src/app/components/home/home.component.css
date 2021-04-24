@@ -1,13 +1,14 @@
-/*@import '~src/assets/fonts/fonts.css';*/
+
 h2{
   color: whitesmoke;
 }
 .outer-layer{
   position: absolute;
   width: 100vw;
-  height: 100vh;
+  height: 200vh;
   color: rgba(0,0,0,0.5);
   z-index: 3;
+  top: 0;
 }
 .texts-and-button{
   top: 35vh;
@@ -51,11 +52,9 @@ h2{
   pointer-events: none;
   z-index: 2;
 }
-/*.svgs{*/
-/*  background-image: linear-gradient(#434343, #333333);*/
-/*}*/
 .svgs {
   background:linear-gradient(30deg, rgba(6,6,32,1) 50%, rgba(0,55,87,1) 100%);
+  display: block;
 }
 
 .mars-circles{

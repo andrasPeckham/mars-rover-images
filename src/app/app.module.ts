@@ -19,11 +19,12 @@ import { StarsComponent } from './components/stars/stars.component';
 import {NgSelectModule} from '@ng-select/ng-select';
 import { RoversComponent } from './components/rovers/rovers.component';
 import { AboutNasaComponent } from './components/about-nasa/about-nasa.component';
+import { MenuBarComponent } from './components/menu-bar/menu-bar.component';
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'images', component: CockpitComponent},
-  {path: 'about', component: AboutComponent},
+  {path: 'rovers', component: RoversComponent},
 
 ];
 @NgModule({
@@ -40,7 +41,8 @@ const appRoutes: Routes = [
     HomeComponent,
     StarsComponent,
     RoversComponent,
-    AboutNasaComponent
+    AboutNasaComponent,
+    MenuBarComponent
   ],
   imports: [
     BrowserModule,

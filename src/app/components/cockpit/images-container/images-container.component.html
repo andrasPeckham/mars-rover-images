@@ -1,10 +1,13 @@
 <div class="outer-cnt">
   <div class="cnt">
-<!--    <div *ngIf="!imagesLoaded" class="loadingDiv">-->
-<!--      <i class="fa fa-refresh fa-spin loadingComponent"></i>-->
-<!--    </div>-->
     <p *ngIf="images.length == 0 && !firstLoad && imagesLoaded" style="color: white">Sorry, there were no rover pictures taken on that day, with that camera.</p>
-    <app-image *ngFor="let image of images" [image]="image"></app-image>
+    <app-image *ngFor="let image of images"
+               [image]="image"
+               (openModal)="openModalWithImage($event)"></app-image>
+    <app-image-modal *ngIf="showModal"
+                     [imgSrc]="modalImage.img_src"
+                     (closeModal)="showModal = false"
+                     (goToImage)="switchImage($event)"></app-image-modal>
   </div>
 </div>
 
