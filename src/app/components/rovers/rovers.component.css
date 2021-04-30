@@ -1,12 +1,13 @@
 .backdrop{
-  background: #c34d2f;
+  /*background: #c34d2f;*/
+  /*background: linear-gradient(#c34d2f, #b3533b);*/
   width: 100vw;
   display: flex;
   justify-content: center;
   padding-bottom: 50px;
 }
 .paragraph-text-container{
-  background-color: #c34d2f;
+  /*background-color: #c34d2f;*/
   width: 100vw;
 }
 .rovers-text{
@@ -55,4 +56,26 @@
 
 .rectangle:hover::after {
   width: 0px;
+}
+.bottom-rover{
+  width: 100vw;
+  height: 1000px;
+  /*background-color: #b58b77;*/
+  background-image: url(../../../assets/images/bottom-rover.png);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  z-index: 4;
+}
+.bottom-rover-background{
+  width: 100vw;
+  height: 1000px;
+  /*background: linear-gradient(#b3533b, #ffffff);*/
+  /*background: linear-gradient(#c34d2f, #b58b77);*/
+}
+.rovers-outer{
+  position: relative;
+  /*background: linear-gradient(#c34d2f, #ffffff);*/
+  background: linear-gradient(#b3533b, #b7b7b7);
+
 }

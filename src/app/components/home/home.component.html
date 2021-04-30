@@ -6,7 +6,8 @@
     <button class="start-exploring-btn" routerLink="/images">START EXPLORING</button>
   </div>
 </div>
-<svg class="svgs" height="100vh" width="100vw">
+<img class="mars-img" src="../../../assets/images/mars-globe-valles-marineris-enhanced_3.png">
+<svg class="svgs" height="150vh" width="100vw">
   <circle class="mars-circles" *ngFor="let circle of marsCircles; let i = index"
           [ngClass]="this.cicrleDirections[i] === true? 'forwards' : 'backwards'"
           [ngStyle]="{'animation-duration': circleSpeeds[i] + 's'}"
@@ -18,5 +19,9 @@
           [attr.stroke-width]="circle.strokeWidth"
           fill="none"/>
 </svg>
-<app-about-nasa></app-about-nasa>
-<img class="mars-img" src="../../../assets/images/mars-globe-valles-marineris-enhanced_3.png">
+<div class="next-components">
+  <app-about-nasa></app-about-nasa>
+  <app-rovers></app-rovers>
+</div>
+
+

@@ -1,9 +1,11 @@
 .outer-cnt{
-  background-color: #c34d2f;
+  /*background-color: #c34d2f;*/
+  background: linear-gradient(#c34d2f, #b3533b);
   height: 1000px;
 }
 .nasa-text-container{
-
+  position: absolute;
+  top: 25vh;
 }
 .nasa-text{
   font-family: Sansation-Bold;
@@ -11,4 +13,10 @@
   color: whitesmoke;
   padding-top: 100px;
   margin: 0 0 0 10vw;
+}
+.wave{
+  display: block;
+}
+.description-container{
+  padding-top: 10px;
 }
