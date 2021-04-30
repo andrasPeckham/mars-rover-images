@@ -5,7 +5,8 @@
   z-index: 3;
 }
 .cnt{
-  height: 1050px;
+  /*height: 1050px;*/
+  min-height: 500px;
   text-align: center;
   width: 80%;
   z-index: 3;

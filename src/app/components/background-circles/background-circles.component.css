@@ -1,7 +1,7 @@
 .svgs{
   position: absolute;
   z-index: 2;
-  top: 400px;
+  top: 20vw;
 }
 .mars-circles{
   stroke-linecap: round;

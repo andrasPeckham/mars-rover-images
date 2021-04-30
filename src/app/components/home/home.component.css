@@ -5,7 +5,7 @@ h2{
 .outer-layer{
   position: absolute;
   width: 100vw;
-  height: 200vh;
+  height: 100vh;
   color: rgba(0,0,0,0.5);
   z-index: 3;
   top: 0;
@@ -53,7 +53,8 @@ h2{
   z-index: 2;
 }
 .svgs {
-  background:linear-gradient(30deg, rgba(6,6,32,1) 50%, rgba(0,55,87,1) 100%);
+  /*background:linear-gradient(30deg, rgba(6,6,32,1) 50%, rgba(0,55,87,1) 100%);*/
+  background:linear-gradient(30deg, rgba(6,6,32,1) 50%, rgba(0,0,0,1) 100%);
   display: block;
 }
 

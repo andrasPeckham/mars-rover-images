@@ -1,11 +1,5 @@
 .outer-cnt{
-  /*background-color: #c34d2f;*/
-  background: linear-gradient(#c34d2f, #b3533b);
-  height: 1000px;
-}
-.nasa-text-container{
-  position: absolute;
-  top: 25vh;
+  background: linear-gradient(#A02F10, #b7b7b7);
 }
 .nasa-text{
   font-family: Sansation-Bold;
@@ -18,5 +12,62 @@
   display: block;
 }
 .description-container{
+  z-index: 4;
   padding-top: 10px;
+  width: 70vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #191716;
+  border-radius: 15px;
+  box-shadow: 0 0 20px black;
+  padding: 60px;
+  max-width: 1200px;
+}
+.description{
+  font-size: 25px;
+  text-align: center;
+  font-family: Sansation-Bold;
+  /*background-color: #6b2c2c;*/
+  /*background: rgba(0, 0, 0, 0.1);*/
+  padding: 10px;
+  color: whitesmoke;
+  border-radius: 20px;
+}
+.align-center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 150px;
+  margin-bottom: 100px;
+}
+.qr-div{
+  margin-top: 30px;
+  /*margin-bottom: 150px;*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 30px;
+  border-radius: 20px;
+  /*background: rgba(0, 0, 0, 0.1);*/
+}
+.learn-more{
+  color: whitesmoke;
+}
+.bottom-rover{
+  width: 100vw;
+  height: 700px;
+  /*background-color: #b58b77;*/
+  background-image: url(../../../assets/images/bottom-rover.png);
+  background-position: top;
+  background-size: cover;
+  background-repeat: no-repeat;
+  z-index: 4;
+}
+.bottom-rover-background{
+  width: 100vw;
+  height: 700px;
+
 }

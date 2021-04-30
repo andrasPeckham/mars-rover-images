@@ -52,6 +52,7 @@ export class CockpitComponent implements OnInit, OnDestroy {
               private activeRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
+    window.scrollTo(0, 0);
     this.firstload = true;
     this.roversLoaded = false;
     this.imagesLoaded = true;

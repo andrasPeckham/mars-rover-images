@@ -2,13 +2,12 @@
   <circle class="mars-circles forwards" *ngFor="let circle of marsCircles; let i = index"
           cy="500px"
           [attr.cy]="i <= 6? '500' : '700'"
-          cx="0px"
           [attr.cx]="circle.left? '0vw' : '100vw'"
           [attr.r]="circle.radius"
-          stroke="rgba(255,255,255,0.1)"
+          stroke="rgba(255,255,255,0.03)"
           [ngClass]="circle.forwards === true? 'forwards' : 'backwards'"
           [ngStyle]="{'animation-duration': circle.speed}"
           [attr.stroke-width]="circle.strokeWidth"
           [attr.stroke-dasharray]="circle.dashArray"
-          [attr.fill]="i === 0? 'rgba(255,255,255,0.1)' : 'none'"/>
+          fill="none"/>
 </svg>

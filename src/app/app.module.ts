@@ -52,7 +52,7 @@ const appRoutes: Routes = [
     HttpClientModule,
     FormsModule,
     RouterModule.forRoot(appRoutes, {
-      scrollPositionRestoration: 'enabled'
+      // scrollPositionRestoration: 'enabled'
     }),
     NgSelectModule
   ],
