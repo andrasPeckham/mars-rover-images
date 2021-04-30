@@ -20,6 +20,7 @@ import {NgSelectModule} from '@ng-select/ng-select';
 import { RoversComponent } from './components/rovers/rovers.component';
 import { AboutNasaComponent } from './components/about-nasa/about-nasa.component';
 import { MenuBarComponent } from './components/menu-bar/menu-bar.component';
+import { BackgroundCirclesComponent } from './components/background-circles/background-circles.component';
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
@@ -42,7 +43,8 @@ const appRoutes: Routes = [
     StarsComponent,
     RoversComponent,
     AboutNasaComponent,
-    MenuBarComponent
+    MenuBarComponent,
+    BackgroundCirclesComponent
   ],
   imports: [
     BrowserModule,

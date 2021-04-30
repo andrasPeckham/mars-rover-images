@@ -1,12 +1,12 @@
 <div class="outer-cnt">
   <div class="cnt">
-    <p *ngIf="images.length == 0 && !firstLoad && imagesLoaded" style="color: white">Sorry, there were no rover pictures taken on that day, with that camera.</p>
+    <p *ngIf="images.length == 0 && imagesLoaded" style="color: white">Sorry, there were no rover pictures taken on that day, with that camera.</p>
     <app-image *ngFor="let image of images"
                [image]="image"
                (openModal)="openModalWithImage($event)"></app-image>
     <app-image-modal *ngIf="showModal"
                      [imgSrc]="modalImage.img_src"
-                     (closeModal)="showModal = false"
+                     (closeModal)="closeModal()"
                      (goToImage)="switchImage($event)"></app-image-modal>
   </div>
 </div>
