@@ -49,6 +49,7 @@
                 <!--                       [(ngModel)]="solOrEarthDate">-->
                 <!--            </ng-select>-->
               </div>
+<!--              <button class="button recent" (click)="searchForImages(true)">Most recent</button>-->
               <button class="button submit" (click)="searchForImages(true)">Search</button>
             </div>
             <p *ngIf="solsAndDaysOfRover" class="labels">Corresponding earth date: <strong>{{ solsAndDaysOfRover.earthDays[solsAndDaysOfRover.sols.indexOf(selectedSol)] | date}}</strong></p>

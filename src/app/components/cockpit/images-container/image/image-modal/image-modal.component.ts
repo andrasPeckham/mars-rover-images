@@ -95,4 +95,7 @@ export class ImageModalComponent implements OnInit {
     this.popupOpacity = 0;
     this.favoritesModified.emit();
   }
+
+  downloadImage(url, name): void {
+  }
 }

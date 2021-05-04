@@ -7,6 +7,9 @@
   border-radius: 10px;
   margin-right: 60px;
 }
+.rovers-outer{
+  z-index: 11;
+}
 .paragraph-text-container{
   position: absolute;
   top: 25vh;

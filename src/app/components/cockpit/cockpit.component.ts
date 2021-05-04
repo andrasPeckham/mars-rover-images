@@ -132,7 +132,6 @@ export class CockpitComponent implements OnInit, OnDestroy {
 
   changePage(changeTo: number): void{
     this.pageNumber = changeTo;
-    console.log('CHANGE pageNumber ', this.pageNumber);
     this.updateQueryParams();
     this.searchForImages(false);
   }
