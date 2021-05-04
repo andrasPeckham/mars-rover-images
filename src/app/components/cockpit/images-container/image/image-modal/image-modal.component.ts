@@ -11,11 +11,15 @@ export class ImageModalComponent implements OnInit {
   @Input() imgSrc: string;
   @Output() closeModal: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() goToImage: EventEmitter<string> = new EventEmitter<string>();
-  @Output() removeFromFavorites: EventEmitter<string> = new EventEmitter<string>();
+  @Output() favoritesModified: EventEmitter<string> = new EventEmitter<string>();
 
   @ViewChild('icons') icons: ElementRef;
 
   iconOpacity = 0;
+  addedToFavorites = false;
+  removedFromFavorites = false;
+  popupOpacity = 0;
+
 
   constructor(private activeRoute: ActivatedRoute) { }
 
@@ -64,12 +68,31 @@ export class ImageModalComponent implements OnInit {
     }
     if (!alreadyContainedImage){
       temp.push(this.imgSrc);
+      this.showPopup(true);
     }
     favorites = temp;
     localStorage.setItem('favorites', JSON.stringify(favorites));
-    console.log('BEFORE REFRESH', JSON.parse(localStorage.getItem('favorites')));
     if (alreadyContainedImage){
-      this.removeFromFavorites.emit();
+      this.showPopup(false);
     }
+  }
+
+  showPopup(added: boolean): void {
+    if (added){
+      this.addedToFavorites = true;
+      this.removedFromFavorites = false;
+    } else {
+      this.addedToFavorites = false;
+      this.removedFromFavorites = true;
+    }
+    this.popupOpacity = 1;
+    setTimeout(() => {
+      this.hidePopup();
+    }, 1500);
+  }
+
+  hidePopup(): void{
+    this.popupOpacity = 0;
+    this.favoritesModified.emit();
   }
 }

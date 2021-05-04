@@ -10,5 +10,9 @@
         <i class="fa fa-times-circle close-btn icon menu" title="Close" (click)=" closeWindow()"></i>
       </div>
     </div>
+    <div class="saved-removed" [ngStyle]="{'opacity' : popupOpacity}">
+      <p class="saved-removed-text" *ngIf="addedToFavorites">Saved to favorites!</p>
+      <p class="saved-removed-text" *ngIf="removedFromFavorites">Removed from favorites!</p>
+    </div>
   </div>
 </div>

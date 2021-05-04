@@ -15,6 +15,8 @@
   z-index: 12;
   position: relative;
   margin-top: 70px;
+  display: flex;
+  justify-content: center;
 }
 
 .modal-img{
@@ -56,4 +58,19 @@
   justify-content: center;
   opacity: 0;
   transition: 0.3s ease-in-out;
+}
+.saved-removed{
+  text-align: center;
+  background: rgba(245,245,245, 0.5);
+  width: 300px;
+  border-radius: 15px;
+  position: absolute;
+  top: 100px;
+  right: 20px;
+  box-shadow: 0 0 20px black;
+  transition: 1s ease-in-out;
+}
+.saved-removed-text{
+ font-family: Sansation-Bold;
+  font-size: 20px;
 }

@@ -21,6 +21,6 @@
   <app-image-modal *ngIf="showModal"
                    [imgSrc]="modalImage"
                    (closeModal)="closeModal()"
-                   (removeFromFavorites)="refreshFavorites()"
+                   (favoritesModified)="refreshFavorites()"
                    (goToImage)="switchImage($event)"></app-image-modal>
 </div>
