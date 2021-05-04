@@ -1,10 +1,18 @@
 <div id="myModal" class="modal" (click)="closeWindow()">
 <!--  <div class="modal-content" [ngStyle]="{'background' : 'url(' + imgSrc + ')'}">-->
-  <div class="triangle-left triangle" (click)="$event.stopPropagation(); previousImage()"></div>
-  <div class="modal-content" (click)="$event.stopPropagation()">
+  <div class="modal-content" (click)="$event.stopPropagation()" (mouseover)="iconOpacity = 1" (mouseleave)="iconOpacity = 0">
     <img class="modal-img" src="{{imgSrc}}">
-    <i class="fa fa-times-circle close-btn" (click)=" closeWindow()"></i>
+    <div class="icons" [ngStyle]="{'opacity' : iconOpacity}">
+      <i class="fa fa-chevron-circle-left left-right left icon" title="Previous image" (click)="$event.stopPropagation(); previousImage()"></i>
+      <i class="fa fa-chevron-circle-right left-right right icon" title="Next image" (click)="$event.stopPropagation(); nextImage()"></i>
+      <div class="icon-menu">
+        <i class="fa fa-heart icon menu" title="Add to favorites" (click)="saveToFavorites()"></i>
+<!--        <i class="fa fa-download download icon menu" (click)="downloadImage()"></i>-->
+        <i class="fa fa-times-circle close-btn icon menu" title="Close" (click)=" closeWindow()"></i>
+      </div>
+    </div>
+<!--    <div class="triangle-right triangle" (click)="$event.stopPropagation(); nextImage()"></div>-->
   </div>
-  <div class="triangle-right triangle" (click)="$event.stopPropagation(); nextImage()"></div>
+
 
 </div>

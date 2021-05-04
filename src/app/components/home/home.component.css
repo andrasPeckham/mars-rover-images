@@ -83,3 +83,53 @@ h2{
   position: absolute;
   top: 80vh;
 }
+.bottom-rocket{
+  width: 100vw;
+  height: 1000px;
+  /*background-color: #b58b77;*/
+  background-image: url(../../../assets/images/rocket-v4.png);
+  background-position: top;
+  background-size: cover;
+  background-repeat: no-repeat;
+  z-index: 4;
+}
+.bottom-rocket-background{
+  position: relative;
+  width: 100vw;
+  height: 1000px;
+  background-color: #191716;
+  display: flex;
+  justify-content: center;
+}
+.github-info{
+  z-index: 5;
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 60vw;
+  top: 300px;
+}
+.textbox-left, .textbox-right{
+  box-shadow: 0 0 30px black;
+  border-radius: 15px;
+  padding: 60px;
+  max-width: 200px;
+}
+.textbox-left{
+  background: linear-gradient(316deg, #eaae6f, #482c21);
+}
+.textbox-right{
+  background: linear-gradient(45deg, #eaae6f, #482c21);
+}
+.text{
+  text-align: center;
+  font-family: Sansation-Bold;
+  color: whitesmoke;
+  font-size: 20px;
+}
+.link{
+  color: whitesmoke;
+  text-decoration: none;
+  cursor: pointer;
+}

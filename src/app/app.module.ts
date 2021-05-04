@@ -15,17 +15,17 @@ import {RouterModule, Routes} from '@angular/router';
 import { AboutComponent } from './components/about/about.component';
 import { ToggleButtonComponent } from './components/toggle-button/toggle-button.component';
 import { HomeComponent } from './components/home/home.component';
-import { StarsComponent } from './components/stars/stars.component';
 import {NgSelectModule} from '@ng-select/ng-select';
 import { RoversComponent } from './components/rovers/rovers.component';
 import { AboutNasaComponent } from './components/about-nasa/about-nasa.component';
 import { MenuBarComponent } from './components/menu-bar/menu-bar.component';
 import { BackgroundCirclesComponent } from './components/background-circles/background-circles.component';
+import { FavoritesComponent } from './components/favorites/favorites.component';
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'images', component: CockpitComponent},
-  {path: 'rovers', component: RoversComponent},
+  {path: 'favorites', component: FavoritesComponent},
 
 ];
 @NgModule({
@@ -40,11 +40,11 @@ const appRoutes: Routes = [
     AboutComponent,
     ToggleButtonComponent,
     HomeComponent,
-    StarsComponent,
     RoversComponent,
     AboutNasaComponent,
     MenuBarComponent,
-    BackgroundCirclesComponent
+    BackgroundCirclesComponent,
+    FavoritesComponent
   ],
   imports: [
     BrowserModule,

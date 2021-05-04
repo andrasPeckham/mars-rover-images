@@ -4,10 +4,10 @@
     <app-image *ngFor="let image of images"
                [image]="image"
                (openModal)="openModalWithImage($event)"></app-image>
-    <app-image-modal *ngIf="showModal"
-                     [imgSrc]="modalImage.img_src"
-                     (closeModal)="closeModal()"
-                     (goToImage)="switchImage($event)"></app-image-modal>
   </div>
 </div>
+<app-image-modal *ngIf="showModal"
+                 [imgSrc]="modalImage.img_src"
+                 (closeModal)="closeModal()"
+                 (goToImage)="switchImage($event)"></app-image-modal>
 

@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<div style="height: 250vh">
+<div style="height: 150vh">
   <app-menu-bar></app-menu-bar>
   <div class="wave-div">
     <svg class="wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
@@ -20,7 +20,7 @@
                            [items]="rovers"
                            bindLabel="name"
                            bindValue="name"
-                           (change)="roverSelected(); updateQueryParams()"
+                           (change)="roverSelected(); updateInfoWithNewSearchparams()"
                            [(ngModel)]="selectedRover">
                 </ng-select>
               </div>
@@ -30,7 +30,7 @@
                            [items]="roverCameras"
                            bindLabel="name"
                            bindValue="name"
-                           (change)="getSolsOfRoverArray(); updateQueryParams()"
+                           (change)="getSolsOfRoverArray(); updateInfoWithNewSearchparams()"
                            [(ngModel)]="selectedCamera">
                 </ng-select>
               </div>
@@ -38,7 +38,7 @@
                 <div class="labels">Sol:</div>
                 <ng-select class="modified"
                            [items]="solsAndDaysOfRover? solsAndDaysOfRover.sols : []"
-                           (change)="updateQueryParams()"
+                           (change)="updateInfoWithNewSearchparams()"
                            [(ngModel)]="selectedSol">
                 </ng-select>
               </div>
@@ -49,7 +49,7 @@
                 <!--                       [(ngModel)]="solOrEarthDate">-->
                 <!--            </ng-select>-->
               </div>
-              <button class="button submit" (click)="searchForImages()">Search</button>
+              <button class="button submit" (click)="searchForImages(true)">Search</button>
             </div>
             <p *ngIf="solsAndDaysOfRover" class="labels">Corresponding earth date: <strong>{{ solsAndDaysOfRover.earthDays[solsAndDaysOfRover.sols.indexOf(selectedSol)] | date}}</strong></p>
             <!--        <button class="button submit" (click)="searchForImages()">Submit</button>-->
@@ -58,12 +58,12 @@
       </div>
     </div>
     <div class="main-elements">
-      <app-left-right-arrows *ngIf="allImages.length != 0 && imagesLoaded" [pages]="photoPages || []" [currentPage]="pageNumber" (changePageTo)="changePage($event)"></app-left-right-arrows>
+      <app-left-right-arrows [pages]="photoPages || []" [currentPage]="pageNumber" (changePageTo)="changePage($event)"></app-left-right-arrows>
       <app-images-container #imagesContainer [_images] = "allImages" [imagesLoaded] = "imagesLoaded"></app-images-container>
-      <app-left-right-arrows *ngIf="allImages.length != 0 && imagesLoaded" [pages]="photoPages || []" [currentPage]="pageNumber" (changePageTo)="changePage($event)"></app-left-right-arrows>
-      <div class="bottom-rocket-background">
-        <div class="bottom-rocket"></div>
-      </div>
+      <app-left-right-arrows  [pages]="photoPages || []" [currentPage]="pageNumber" (changePageTo)="changePage($event)"></app-left-right-arrows>
+<!--      <div class="bottom-rocket-background">-->
+<!--        <div class="bottom-rocket"></div>-->
+<!--      </div>-->
     </div>
 
   </div>
