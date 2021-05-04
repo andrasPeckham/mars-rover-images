@@ -10,29 +10,44 @@ export class FavoritesComponent implements OnInit {
   constructor() { }
 
   favorites = [];
+  noFavorites = false;
+  noWebSupport = false;
+  showModal = false;
+  modalImage;
 
   ngOnInit(): void {
+   this.refreshFavorites();
+  }
+
+  openModalWithImage(image: any): void{
+    this.modalImage = image;
+    this.showModal = true;
+  }
+
+  closeModal(): void {
+    this.showModal = false;
+  }
+
+  switchImage($event: string): void {
+    console.log('SWITCHIMAGE');
+  }
+
+  refreshFavorites(): void {
+    console.log('REFRESH');
+    this.favorites = [];
     if (typeof(Storage) !== 'undefined') {
       let tempFavorites = [];
       tempFavorites = JSON.parse(localStorage.getItem('favorites'));
-      console.log(tempFavorites);
-      console.log(this.favorites);
-      if (tempFavorites){
+      if (tempFavorites && tempFavorites.length !== 0){
         tempFavorites.forEach(favorite => {
-          console.log('fav', favorite);
-          console.log('fav type', typeof favorite);
           this.favorites.push(favorite);
         });
       } else {
-        console.log('NO FAVORITES YET');
+        this.noFavorites = true;
       }
-      console.log('favorites', this.favorites);
     } else {
-      console.log('Sorry! No Web Storage support..');
+      this.noWebSupport = true;
     }
-  }
-
-  openModalWithImage($event: any): void{
-    console.log('OPEN MODAL event', $event);
+    console.log('FAVORITES', this.favorites);
   }
 }

@@ -5,9 +5,9 @@ h2{
 .outer-layer{
   position: absolute;
   width: 100vw;
-  height: 100vh;
+  height: 400vh;
   color: rgba(0,0,0,0.5);
-  z-index: 3;
+  z-index: 6;
   top: 0;
 }
 .texts-and-button{

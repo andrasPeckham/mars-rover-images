@@ -4,7 +4,7 @@
   float: right;
   right: 5vw;
   top: 0px;
-  z-index: 10;
+  z-index: 15;
 }
 .menu-option{
   cursor: pointer;

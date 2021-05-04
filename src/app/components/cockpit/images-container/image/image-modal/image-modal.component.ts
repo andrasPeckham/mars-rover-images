@@ -11,6 +11,7 @@ export class ImageModalComponent implements OnInit {
   @Input() imgSrc: string;
   @Output() closeModal: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() goToImage: EventEmitter<string> = new EventEmitter<string>();
+  @Output() removeFromFavorites: EventEmitter<string> = new EventEmitter<string>();
 
   @ViewChild('icons') icons: ElementRef;
 
@@ -52,13 +53,10 @@ export class ImageModalComponent implements OnInit {
     } else {
       favorites = [];
     }
-    console.log('load ', favorites);
     const temp = [];
     let alreadyContainedImage = false;
     for (const favorite of favorites.entries()){
-      console.log('FAV', favorite);
       if (favorite['1'] === this.imgSrc){
-        console.log('remove');
         alreadyContainedImage = true;
       } else {
         temp.push(favorite['1']);
@@ -69,5 +67,9 @@ export class ImageModalComponent implements OnInit {
     }
     favorites = temp;
     localStorage.setItem('favorites', JSON.stringify(favorites));
+    console.log('BEFORE REFRESH', JSON.parse(localStorage.getItem('favorites')));
+    if (alreadyContainedImage){
+      this.removeFromFavorites.emit();
+    }
   }
 }
