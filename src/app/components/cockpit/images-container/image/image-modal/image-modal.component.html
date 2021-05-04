@@ -1,8 +1,19 @@
-<div id="myModal" class="modal">
-  <div class="modal-content">
-    <img src="{{imgSrc}}">
-    <p class="close" (click)="closeModal()">x</p>
-    <div class="triangle-left" (click)="changeImgTo('prev')"></div>
-    <div class="triangle-right" (click)="changeImgTo('next')"></div>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<div id="myModal" class="modal" (click)="closeWindow()">
+  <div class="modal-content" (click)="$event.stopPropagation()" (mouseover)="iconOpacity = 1" (mouseleave)="iconOpacity = 0">
+    <img class="modal-img" src="{{imgSrc}}">
+    <div class="icons" [ngStyle]="{'opacity' : iconOpacity}">
+      <i class="fa fa-chevron-circle-left left-right left icon" title="Previous image" (click)="$event.stopPropagation(); previousImage()"></i>
+      <i class="fa fa-chevron-circle-right left-right right icon" title="Next image" (click)="$event.stopPropagation(); nextImage()"></i>
+      <div class="icon-menu">
+<!--        <i class="fa fa-download icon menu" title="Download image" (click)="downloadImage(imgSrc, 'asd')"></i>-->
+        <i class="fa fa-heart icon menu" title="Add/remove from favorites" (click)="saveToFavorites()"></i>
+        <i class="fa fa-times-circle close-btn icon menu" title="Close" (click)=" closeWindow()"></i>
+      </div>
+    </div>
+    <div class="saved-removed" [ngStyle]="{'opacity' : popupOpacity}">
+      <p class="saved-removed-text" *ngIf="addedToFavorites">Saved to favorites!</p>
+      <p class="saved-removed-text" *ngIf="removedFromFavorites">Removed from favorites!</p>
+    </div>
   </div>
 </div>

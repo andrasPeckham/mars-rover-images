@@ -2,11 +2,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 7
+;
 }
 .cnt{
-  height: 1050px;
+  min-height: 600px;
   text-align: center;
   width: 80%;
+  z-index: 7;
 }
 .loadingComponent{
   text-align: center;

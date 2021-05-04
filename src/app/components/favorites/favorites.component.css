@@ -1,0 +1,42 @@
+.wave-div{
+  padding-top: 200px;
+  background-image: url(https://www.nasa.gov/sites/default/files/thumbnails/image/pia22313.jpg);
+  background-size: cover;
+}
+.wave{
+  display: block;
+}
+.favorites-text{
+  font-family: Sansation-Bold;
+  font-size: 60px;
+  color: whitesmoke;
+  margin: 0;
+  padding-bottom: 50px;
+  padding-left: 10vw;
+  background-color: #191716;
+}
+.main-content{
+  position: relative;
+  background: #191716;
+  min-height: 120vh;
+}
+.outer-cnt{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 3;
+}
+.cnt{
+  margin-top: 50px;
+  min-height: 600px;
+  text-align: center;
+  width: 80%;
+  z-index: 3;
+}
+.notification-text{
+  text-align: center;
+  color: whitesmoke;
+  font-size: 30px;
+  font-family: Sansation-Bold;
+  margin-top: 100px;
+}

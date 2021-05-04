@@ -31,10 +31,13 @@ export class MarsImageService {
     params = {
       api_key: 'E3qash6cEd3SaoTdIjTyHjGzJHF2INcONp9uG5yj',
       sol: sol.toString(),
-      page: page.toString()
     };
     if (camera){
       params.camera = camera.toString();
+    }
+    if (page){
+      console.log('PAGE');
+      params.page = page.toString();
     }
     return this.http.get<ImagesResult>(this.nasaApiUrl + '/rovers/'  + rover
       + '/photos', {

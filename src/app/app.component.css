@@ -9,6 +9,7 @@
 body{
   -ms-overflow-style: none;
   scrollbar-width: none;
+  background-color: #191716;
 }
 .content-below-home{
   position: absolute;
