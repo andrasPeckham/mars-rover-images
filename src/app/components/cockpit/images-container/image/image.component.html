@@ -1,5 +1,5 @@
 <img loading = lazy
   class="marsImg"
-  src="{{image.img_src}}"
-  (click)="showModal = true">
-<app-image-modal *ngIf="showModal" [imgSrc]="image.img_src" (closeButton)="showModal = false"></app-image-modal>
+  src="{{image.img_src? image.img_src : image}}"
+  (click)="openModal.emit(image)">
+<!--<app-image-modal *ngIf="showModal" [imgSrc]="image.img_src" (closeButton)="showModal = false"></app-image-modal>-->

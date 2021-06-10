@@ -1,56 +1,72 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<!--<svg height="100px" width="100vw">-->
-<!--  <circle  cx="15vw" cy="0" r="50px" fill="rgba(255,255,255,1)"/>-->
-<!--</svg>-->
-<div class="background">
-  <div>
-    <h2 class="images-text">IMAGES</h2>
-    <div class="outer-container">
-      <div class="inner-container">
-        <div class="search-params">
-          <div class="search-box">
-            <div class="labels">Rover:</div>
-            <ng-select class="modified"
-                       [items]="rovers"
-                       bindLabel="name"
-                       bindValue="name"
-                       (ngModelChange)="roverSelected()"
-                       [(ngModel)]="selectedRover">
-            </ng-select>
+<div style="height: 150vh">
+  <app-menu-bar></app-menu-bar>
+  <div class="wave-div">
+    <svg class="wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+      <path fill="#191716" fill-opacity="1" d="M0,96L80,106.7C160,117,320,139,480,176C640,213,800,267,960,261.3C1120,256,1280,192,1360,160L1440,128L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path>
+    </svg>
+  </div>
+  <div class="background">
+    <app-background-circles></app-background-circles>
+    <div class="top-cockpit-menu">
+      <div>
+        <h2 class="images-text">IMAGES</h2>
+        <div class="outer-container">
+          <div class="inner-container">
+            <div class="search-params">
+              <div class="search-box">
+                <div class="labels">Rover:</div>
+                <ng-select class="modified"
+                           [items]="rovers"
+                           bindLabel="name"
+                           bindValue="name"
+                           (change)="roverSelected(); updateInfoWithNewSearchparams()"
+                           [(ngModel)]="selectedRover">
+                </ng-select>
+              </div>
+              <div class="search-box">
+                <div class="labels">Camera:</div>
+                <ng-select class="modified"
+                           [items]="roverCameras"
+                           bindLabel="name"
+                           bindValue="name"
+                           (change)="getSolsOfRoverArray(); updateInfoWithNewSearchparams()"
+                           [(ngModel)]="selectedCamera">
+                </ng-select>
+              </div>
+              <div class="search-box">
+                <div class="labels">Sol:</div>
+                <ng-select class="modified"
+                           [items]="solsAndDaysOfRover? solsAndDaysOfRover.sols : []"
+                           (change)="updateInfoWithNewSearchparams()"
+                           [(ngModel)]="selectedSol">
+                </ng-select>
+              </div>
+              <div class="search-box">
+                <!--            <div class="labels">Date format:</div>-->
+                <!--            <ng-select class="modified"-->
+                <!--                       [items]="['Sols', 'Earth date']"-->
+                <!--                       [(ngModel)]="solOrEarthDate">-->
+                <!--            </ng-select>-->
+              </div>
+<!--              <button class="button recent" (click)="searchForImages(true)">Most recent</button>-->
+              <button class="button submit" (click)="searchForImages(true)">Search</button>
+            </div>
+            <p *ngIf="solsAndDaysOfRover" class="labels">Corresponding earth date: <strong>{{ solsAndDaysOfRover.earthDays[solsAndDaysOfRover.sols.indexOf(selectedSol)] | date}}</strong></p>
+            <!--        <button class="button submit" (click)="searchForImages()">Submit</button>-->
           </div>
-          <div class="search-box">
-            <div class="labels">Camera:</div>
-            <ng-select class="modified"
-                       [items]="roverCameras"
-                       bindLabel="name"
-                       bindValue="name"
-                       (ngModelChange)="getSolsOfRoverArray()"
-                       [(ngModel)]="selectedCamera">
-            </ng-select>
-          </div>
-          <div class="search-box">
-            <div class="labels">Sol:</div>
-            <ng-select class="modified"
-                       [items]="solsAndDaysOfRover? solsAndDaysOfRover.sols : []"
-                       [(ngModel)]="solNumber">
-            </ng-select>
-          </div>
-          <div class="search-box">
-<!--            <div class="labels">Date format:</div>-->
-<!--            <ng-select class="modified"-->
-<!--                       [items]="['Sols', 'Earth date']"-->
-<!--                       [(ngModel)]="solOrEarthDate">-->
-<!--            </ng-select>-->
-          </div>
-          <button class="button submit" (click)="searchForImages()">Search</button>
         </div>
-        <p *ngIf="solsAndDaysOfRover" class="labels">Corresponding earth date: <strong>{{ solsAndDaysOfRover.earthDays[solsAndDaysOfRover.sols.indexOf(solNumber)] | date}}</strong></p>
-<!--        <button class="button submit" (click)="searchForImages()">Submit</button>-->
       </div>
     </div>
-  </div>
-  <app-left-right-arrows *ngIf="allImages.length != 0 && imagesLoaded" [pages]="photoPages || []" [currentPage]="pageNumber" (changePageTo)="changePage($event)"></app-left-right-arrows>
-  <app-images-container #imagesContainer [images] = "allImages" [imagesLoaded] = "imagesLoaded" [firstLoad]="firstload"></app-images-container>
-  <app-left-right-arrows *ngIf="allImages.length != 0 && imagesLoaded" [pages]="photoPages || []" [currentPage]="pageNumber" (changePageTo)="changePage($event)"></app-left-right-arrows>
+    <div class="main-elements">
+      <app-left-right-arrows [pages]="photoPages || []" [currentPage]="pageNumber" (changePageTo)="changePage($event)"></app-left-right-arrows>
+      <app-images-container #imagesContainer [_images] = "allImages" [imagesLoaded] = "imagesLoaded"></app-images-container>
+      <app-left-right-arrows  [pages]="photoPages || []" [currentPage]="pageNumber" (changePageTo)="changePage($event)"></app-left-right-arrows>
+<!--      <div class="bottom-rocket-background">-->
+<!--        <div class="bottom-rocket"></div>-->
+<!--      </div>-->
+    </div>
 
+  </div>
 </div>
+

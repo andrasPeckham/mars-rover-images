@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {MarsImage} from '../../../../models/PhotoResult/mars-image';
 
 @Component({
@@ -8,7 +8,7 @@ import {MarsImage} from '../../../../models/PhotoResult/mars-image';
 })
 export class ImageComponent implements OnInit {
   @Input() image: MarsImage;
-  showModal = false;
+  @Output() openModal: EventEmitter<MarsImage> = new EventEmitter<MarsImage>();
 
   constructor() { }
 
